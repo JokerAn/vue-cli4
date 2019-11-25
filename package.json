@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:prod": "vue-cli-service build",
+    "build:dev": "vue-cli-service build --mode development",
+    "build:uat": "vue-cli-service build --mode uat",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -38,7 +40,10 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "no-console":"off",
+      "no-debugger":"off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
