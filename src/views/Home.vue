@@ -6,18 +6,18 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: "home",
-  components: {
+  'name': 'home',
+  'components': {
     HelloWorld
   },
   data() {
     return {
-      msg: process.env.VUE_APP_MSG,
-      test: "tesafasdft"
-    };
+      'msg': process.env.VUE_APP_MSG,
+      'test': 'tesafasdft'
+    }
   }
-};
+}
 </script>

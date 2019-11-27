@@ -43,7 +43,12 @@
     ],
     "rules": {
       "no-console": "off",
-      "no-debugger": "off"
+      "no-debugger": "off",
+      "semi": ["off", "never"],
+      "semi-spacing": [2, {
+        "before": false,
+        "after": true
+      }]
     },
     "parserOptions": {
       "parser": "babel-eslint"
