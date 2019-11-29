@@ -129,8 +129,8 @@ module.exports = {
       }
     }],
     "vue/html-closing-bracket-newline": [0, {
-      "singleline": "never",
-      "multiline": "always"
+      "singleline": "always",
+      "multiline": "never"
     }],
  
     "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格

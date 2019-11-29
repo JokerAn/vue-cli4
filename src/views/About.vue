@@ -1,12 +1,13 @@
 <template>
   <div class="about">
     <img id="a3" src="@/assets/logo.png" alt size="2"
-         data-aaa="a" data-aaaa="a" style="color:red;cursor:pointer"
-         class="a1" title="a" data-aa="a">
+         data-aaa="a" data-aaaa="a" class="a1" title="a"
+         data-aa="a"
+         style="color:red;cursor:pointer"
+    >
     <input type="text">
     <div></div>
-    <span>
-      asdfspan
+    <span id="a55">
       <b>asdf</b>
     </span>
     <h1>{{ newTime }}</h1>
@@ -27,13 +28,18 @@
       <el-button type="warning" plain>警告按钮</el-button>
       <el-button type="danger" plain>危险按钮</el-button>
     </el-row>
-    <p>asdf</p>
+    <h2>svg</h2>
+    <icon class="svgaaa" name="wx" :w="100"
+          :h="100"></icon>
+    <icon name="shtg" :w="100" :h="100"></icon>
+    <icon name="aaa" :w="100" :h="100"></icon>
+    <p>阿斯顿发</p>
 
     <el-select v-model="values" filterable placeholder="请选择">
       <el-option v-for="item in options" :key="item.value" :label="item.label"
-                 :value="item.value"></el-option>
-    </el-select>
-  </div>
+                 :value="item.value"
+      ></el-option>
+    </el-select></div>
 </template>
 <script>
 import { chainDate } from '@/utils/public'
@@ -43,7 +49,7 @@ export default {
       'options': [
         {
           'value': '选项1',
-          'label': '黄金糕'
+          'label': '黄金asdf糕'
         },
         {
           'value': '选项2',
