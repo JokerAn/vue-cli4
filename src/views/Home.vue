@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HelloWorld :msg="msg"></HelloWorld>
+    <el-input v-model="login.loginName" placeholder="请输入内容"></el-input>
   </div>
 </template>
 
@@ -15,6 +16,9 @@ export default {
   },
   data() {
     return {
+      'login':{
+        'loginName':'1'
+      },
       'msg': process.env.VUE_APP_MSG,
       'test': 'tesafasdft'
     }

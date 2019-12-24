@@ -99,9 +99,9 @@ module.exports = {
     "no-unexpected-multiline": 0,//避免多行表达式
     "no-underscore-dangle": 1,//标识符不能以_开头或结尾
     "no-unneeded-ternary": 2,//禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
-    "no-unreachable": 2,//不能有无法执行的代码
+    "no-unreachable": 0,//不能有无法执行的代码 0允许return、throw、continue 和 break语句之后出现不可达代码
     "no-unused-expressions": 2,//禁止无用的表达式
-    "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
+    "no-unused-vars": [0, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
     "no-use-before-define": 2,//未定义前不能使用
     "no-useless-call": 2,//禁止不必要的call和apply
     "no-void": 2,//禁用void操作符
@@ -172,12 +172,15 @@ module.exports = {
     "max-len": [0, 80, 4],//字符串最大长度
     "max-nested-callbacks": [0, 2],//回调嵌套深度
     "max-params": [0, 3],//函数最多只能有3个参数
-    "new-cap": 2,//函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
+    "new-cap": [2, {
+      'newIsCap': true,
+      'capIsNew': false
+    }],//函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
     "new-parens": 2,//new时必须加小括号
     "newline-after-var": 2,//变量声明后是否需要空一行
     "object-curly-spacing": [0, "never"],//大括号内是否允许不必要的空格
     "object-shorthand": 0,//强制对象字面量缩写语法
-    "one-var": 1,//连续声明
+    "one-var": 0,//连续声明
     "operator-assignment": [0, "always"],//赋值运算符 += -=什么的
     "operator-linebreak": [2, "after"],//换行时运算符在行尾还是行首
     "padded-blocks": 0,//块语句内行首行尾是否要空行

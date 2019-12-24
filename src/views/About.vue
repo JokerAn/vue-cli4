@@ -35,17 +35,42 @@
     <icon name="aaa" :w="100" :h="100"></icon>
     <p>阿斯顿发</p>
 
-    <el-select v-model="values" filterable placeholder="请选择">
+    <el-select v-model="values" class="a10" filterable
+               placeholder="请选择">
       <el-option v-for="item in options" :key="item.value" :label="item.label"
                  :value="item.value"
       ></el-option>
-    </el-select></div>
+    </el-select>
+    <div style="padding:30px;">
+      <p>测试myAjax ： {{ userInfo.userName }}</p>
+      <div style="display:flex;">
+        <el-input v-model="login.loginName" placeholder="请输入内容"></el-input>
+        <el-input v-model="login.password" placeholder="请输入密码"></el-input>
+        <el-input v-model="login.imgcode" placeholder="请输入验证码"></el-input>
+        <div @click="getImgcode">
+          <img height="50px" :src="`${baseUrl}/appImageCode/img/validate?${nowTime}`" alt="">
+        </div>
+      </div>
+
+      <el-button type="success" @click="loginF">登录axios.post</el-button>
+      <el-button type="success" @click="loginF2">登录axios({...})</el-button>
+
+    </div>
+  </div>
 </template>
 <script>
 import { chainDate } from '@/utils/public'
 export default {
   data() {
     return {
+      'userInfo':{},
+      'login':{
+        'anonymouslogin':true,
+        'loginName':'wei.xia@ambow.com',
+        'password':'Ambow99999999'
+      },
+      'baseUrl': process.env.VUE_APP_BASE_API,
+      'nowTime':new Date()-0,
       'options': [
         {
           'value': '选项1',
@@ -54,18 +79,6 @@ export default {
         {
           'value': '选项2',
           'label': '双皮奶'
-        },
-        {
-          'value': '选项3',
-          'label': '蚵仔煎'
-        },
-        {
-          'value': '选项4',
-          'label': '龙须面'
-        },
-        {
-          'value': '选项5',
-          'label': '北京烤鸭'
         }
       ],
       'values': '',
@@ -78,6 +91,31 @@ export default {
     }, 1000)
   },
   'methods': {
+    getImgcode() {
+      this.nowTime = new Date().getTime()
+    },
+    loginF() {
+      this.$axios.post(this.$apiUrls.login.login,this.login).then(result=>{
+        console.log(result)
+        this.userInfo = result.data.userInfo
+      }).catch(err => {
+        console.log(err)
+        this.getImgcode()
+      })
+    },
+    loginF2() {
+      this.$axios({
+        'method':'post',
+        'url':this.$apiUrls.login.login,
+        'data':this.login
+      }).then(result=>{
+        console.log(result)
+        this.userInfo = result.data.userInfo
+      }).catch(err => {
+        console.log(err)
+        this.getImgcode()
+      })
+    },
     deleteSomeThing() {
       var a = { 'a': 1, 'b': 'asd' },
         b = [
@@ -118,7 +156,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-/deep/ .el-input {
+/deep/ .a10 .el-input {
   width: 500px;
   input {
     color: blue;
@@ -126,7 +164,7 @@ export default {
 }
 </style>
 <style lang="less">
-.el-input {
+.a10 .el-input {
   input {
     font-size: 30px;
   }
