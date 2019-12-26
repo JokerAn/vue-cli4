@@ -18,6 +18,10 @@ import myAxios from '@/apis/httpBase.js'
 import apiUrls from '@/apis/apiUrls.js'
 Vue.prototype.$axios = myAxios
 Vue.prototype.$apiUrls = apiUrls
+import * as filters from './filters'
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 new Vue({
   router,
   store,

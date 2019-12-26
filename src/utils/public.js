@@ -1,3 +1,11 @@
+/*
+  写一些公用的方法
+  在用的地方
+  1.引入  import { chainDate } from '@/utils/public'
+  2.使用  this.newTime = chainDate(new Date())
+
+*/
+
 export function chainDate(times, fengefu) {
   if (typeof times === 'string') {
     times = times.replace(/-/g, '/')

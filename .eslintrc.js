@@ -71,7 +71,7 @@ module.exports = {
     "no-new-wrappers": 2,//禁止使用new创建包装实例，new String new Boolean new Number
     "no-obj-calls": 2,//不能调用内置的全局对象，比如Math() JSON()
     "no-octal": 2,//禁止使用八进制数字
-    "no-octal-escape": 2,//禁止使用八进制转义序列
+    "no-octal-escape": 0,//禁止使用八进制转义序列
     "no-path-concat": 0,//node中不能使用__dirname或__filename做路径拼接
     "no-plusplus": 0,//禁止使用++，--
     "no-process-env": 0,//禁止使用process.env
@@ -84,7 +84,7 @@ module.exports = {
     "no-script-url": 0,//禁止使用javascript:void(0)
     "no-self-compare": 2,//不能比较自身
     "no-sequences": 0,//禁止使用逗号运算符
-    "no-shadow": 2,//外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
+    "no-shadow": 0,//外部作用域中的变量不能与它所包含的作用域中的变量或参数同名 vuex会出问题
     "no-shadow-restricted-names": 2,//严格模式中规定的限制标识符不能作为声明时的变量名使用
     "no-spaced-func": 2,//函数调用时 函数名与()之间不能有空格
     "no-sparse-arrays": 2,//禁止稀疏数组， [1,,2]
@@ -95,7 +95,8 @@ module.exports = {
     "no-throw-literal": 2,//禁止抛出字面量错误 throw "error";
     "no-undef": 1,//不能有未定义的变量
     "no-undef-init": 2,//变量初始化时不能直接给它赋值为undefined
-    "no-undefined": 2,//不能使用undefined
+    "no-undefined": 0,//2不能使用undefined
+    "no-useless-escape": 0 //2正则会有问题
     "no-unexpected-multiline": 0,//避免多行表达式
     "no-underscore-dangle": 1,//标识符不能以_开头或结尾
     "no-unneeded-ternary": 2,//禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
@@ -103,7 +104,7 @@ module.exports = {
     "no-unused-expressions": 2,//禁止无用的表达式
     "no-unused-vars": [0, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
     "no-use-before-define": 2,//未定义前不能使用
-    "no-useless-call": 2,//禁止不必要的call和apply
+    "no-useless-call": 0,//禁止不必要的call和apply
     "no-void": 2,//禁用void操作符
     "no-var": 0,//禁用var，用let和const代替
     "no-warning-comments": [1, { "terms": ["todo", "fixme", "xxx"], "location": "start" }],//不能有警告备注
@@ -188,7 +189,7 @@ module.exports = {
     "prefer-spread": 0,//首选展开运算
     "prefer-reflect": 0,//首选Reflect的方法
     "quotes": [1, "single"],//引号类型 `` "" ''
-    "quote-props":[2, "always"],//对象字面量中的属性名是否强制双引号
+    "quote-props":[0, "always"],//对象中的属性名是否强制双引号 {a:1}报错 应该为 {"a":1} 关掉！！
     "radix": 2,//parseInt必须指定第二个参数
     "id-match": 0,//命名检测
     "require-yield": 0,//生成器函数必须有yield
