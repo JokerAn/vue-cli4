@@ -1,0 +1,176 @@
+{
+  "terminal.integrated.rendererType": "experimentalWebgl",
+  "workbench.settings.useSplitJSON": true,
+  "window.zoomLevel": 0,
+  "editor.renderLineHighlight": "all",
+  "terminal.integrated.cursorStyle": "line",
+  "editor.minimap.enabled": true,
+  "git.enableSmartCommit": true,
+  "sync.gist": "9b6390b4c6716099e15b4caee7105eba",
+  "editor.fontFamily": "YOUR FONT, Menlo, Monaco, 'Courier New', monospace",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 4000,
+  "editor.fontSize": 16,
+  "editor.fontWeight": "600",
+  "editor.lineHeight": 23,
+  "workbench.commandPalette.history": 100,
+  "workbench.commandPalette.preserveInput": true,
+  "typescript.reportStyleChecksAsWarnings": false,
+  "terminal.integrated.fontFamily": " 'Courier New'",
+  "editor.hover.enabled": false,
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "liveServer.settings.donotVerifyTags": true,
+  "window.restoreWindows": "all",
+  "workbench.tree.indent": 14, //左侧文件夹的缩进长度
+  "workbench.tree.renderIndentGuides": "always", //是否显示线 none不显示 
+  "editor.snippetSuggestions": "inline", // 提示建议代码顺序 
+  "emmet.showSuggestionsAsSnippets": true, // 提示建议代码 
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+  // tab 大小为2个空格
+  "editor.tabSize": 2,
+  // 150 列后换行
+  "editor.wordWrapColumn": 150,
+  // 开启 vscode 文件路径导航
+  "breadcrumbs.enabled": true,
+  // 显示 markdown 中英文切换时产生的特殊字符
+  "editor.renderControlCharacters": true,
+  // 设置 eslint 保存时自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false
+  },
+  // vetur 的自定义设置
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "auto",
+      "end_with_newline": false
+    },
+    "prettier": {
+      "autoFixOnSave": true,
+      "singleQuote": true, //设置强制单引号
+      "semi": true, //设置语句末尾不加分号
+      "jsxBracketSameLine": false //将>多行JSX元素放在最后一行的末尾，而不是单独放在下一行
+    }
+  },
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "vetur.format.defaultFormatter.html": "js-beautify-html", //格式化.vue中html
+  "vetur.format.defaultFormatter.js": "prettier-eslint", //格式化.vue中js
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.iconTheme": "vscode-icons",
+  "sync.forceUpload": true,
+  "git.autofetch": true,
+  "laravel_goto_view.quickJump": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "[html]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[ts]": {
+    "editor.defaultFormatter": "prettier"
+  },
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.scopes": [
+    "document",
+    "containers"
+  ],
+  "gitlens.statusBar.enabled": false,
+  "gitlens.hovers.currentLine.enabled": false,
+  "gitlens.views.fileHistory.avatars": false,
+  "gitlens.views.lineHistory.avatars": false,
+  "gitlens.blame.highlight.locations": [
+    "gutter",
+    "line",
+    "overview"
+  ],
+  "gitlens.recentChanges.highlight.locations": [
+    "gutter",
+    "line",
+    "overview"
+  ],
+  "gitlens.menus": {
+    "editorGroup": {
+      "blame": true,
+      "compare": true
+    },
+    "editorTab": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "explorer": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true
+    },
+    "scmGroup": {
+      "compare": true,
+      "openClose": true,
+      "stash": true,
+      "stashInline": true
+    },
+    "scmItem": {
+      "clipboard": true,
+      "compare": true,
+      "history": true,
+      "remote": true,
+      "stash": true
+    }
+  },
+  "gitlens.mode.statusBar.enabled": false,
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "bracketPairColorizer.consecutivePairColors": [
+    "()",
+    "[]",
+    "{}",
+    [
+      "#3775E7",
+      "Gold",
+      "Orange"
+    ],
+    "Red"
+  ],
+"bracketPairColorizer.independentPairColors": [
+    [
+      "()",
+      [
+        "Darkblue",
+        "#3775E7",
+        "Gold",
+      ],
+      "Red"
+    ],
+    [
+      "[]",
+      ["Gold",
+        "Darkblue",
+        
+        "Orange"
+      ],
+      "Red"
+    ],
+    [
+      "{}",
+      [
+        "Darkblue",
+        "Gold",
+        
+      ],
+      "Red"
+    ]
+  ],
+}

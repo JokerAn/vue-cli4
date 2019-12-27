@@ -1,8 +1,8 @@
 <template>
-  <div id='a1'>
+  <div id="a1">
     <h2>弹框 确定按钮在左边 必须使用cancelButtonClass: "pop_success_btn_left"</h2>
-    <el-button type="primary"  @click="addSubmit">点我js弹出框警告框</el-button>
-    <el-button type="primary"  @click="editShow=true">点我html编辑弹出框</el-button>
+    <el-button type="primary" @click="addSubmit">点我js弹出框警告框</el-button>
+    <el-button type="primary" @click="editShow=true">点我html编辑弹出框</el-button>
     <el-dialog title="收货地址" :visible.sync="editShow" width="500px">
       <el-form :model="pageData">
         <el-form-item label="活动名称" label-width="120px">
@@ -28,35 +28,35 @@ export default {
   data() {
     return {
       editShow:false,
-        pageData: {
-          name: '',
-           region:  '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        },
+      pageData: {
+        name: '',
+        region:  '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      }
     }
   },
   methods:{
     addSubmit(){
-       this.$confirm('检测到未保存的内容，是否在离开页面前保存修改？', '确认信息', {
-           cancelButtonClass: "pop_success_btn_left"//给取消按钮加class=' xxx pop_success_btn_left'让他去最右边
-        })
-          .then(() => {
-            this.$message({
-               type: 'info',
-              message: '确定'
-            });
+      this.$confirm('检测到未保存的内容，是否在离开页面前保存修改？', '确认信息', {
+        cancelButtonClass: 'pop_success_btn_left'//给取消按钮加class=' xxx pop_success_btn_left'让他去最右边
+      })
+        .then(() => {
+          this.$message({
+            type: 'info',
+            message:  '确定'
           })
-           .catch(action => {
-            this.$message({
-              type: 'info',
-              message: '取消'
-            })
-          });
+        })
+        .catch(action => {
+          this.$message({
+            type: 'info',
+            message: '取消'
+          })
+        })
     }
 
   }

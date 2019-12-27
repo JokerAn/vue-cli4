@@ -42,7 +42,7 @@
       ></el-option>
     </el-select>
     <div style="padding:30px;">
-      <p>测试myAjax ： {{ userInfo.userName }}-{{userInfo.sexJokerAn | sex}} 《-- 我用到了filter</p>
+      <p>测试myAjax ： {{ userInfo.userName }}-{{ userInfo.sexJokerAn | sex }} 《-- 我用到了filter</p>
       <div style="display:flex;">
         <el-input v-model="login.loginName" placeholder="请输入内容"></el-input>
         <el-input v-model="login.password" placeholder="请输入密码"></el-input>
@@ -111,7 +111,7 @@ export default {
         'data':this.login
       }).then(result=>{
         console.log(result)
-         result.data.userInfo.sexJokerAn = 1
+        result.data.userInfo.sexJokerAn = 1
         this.userInfo = result.data.userInfo
       }).catch(err => {
         console.log(err)
