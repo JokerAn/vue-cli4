@@ -1,12 +1,15 @@
 <template>
-  <div class="text_center">
+  <div>
     <h2>element-ui-base用法</h2>
-    <ul class="anclear nav">
+    <ul class="anclear nav text_center ">
       <li class="fl">
         <router-link to="/element-ui-base/button">button</router-link>
       </li>
       <li class="fl">
         <router-link to="/element-ui-base/input">input</router-link>
+      </li>
+      <li class="fl">
+        <router-link to="/element-ui-base/pop">弹出框</router-link>
       </li>
     </ul>
     <div>

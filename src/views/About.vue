@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about  text_center">
     <img id="a3" src="@/assets/logo.png" alt size="2"
          data-aaa="a" data-aaaa="a" class="a1" title="a"
          data-aa="a"

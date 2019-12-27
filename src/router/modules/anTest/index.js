@@ -1,6 +1,7 @@
 import ElementUiBase from '@/views/anTest/element-ui-base.vue'
 import Button from '@/views/anTest/button.vue'
 import Input from '@/views/anTest/input.vue'
+import Pop from '@/views/anTest/pop.vue'
 
 export default [
   {
@@ -23,6 +24,14 @@ export default [
       'path': 'input',
       'name': 'Input',
       'component': Input,
+      'meta': {
+        'icon': 'Input',
+        'title': 'element基础输入框'
+      }
+    },{
+      'path': 'pop',
+      'name': 'Pop',
+      'component': Pop,
       'meta': {
         'icon': 'Input',
         'title': 'element基础输入框'

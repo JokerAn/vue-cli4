@@ -1,12 +1,15 @@
 <template>
   <div>
     <p>我是主页</p>
-    <div id="nav">
+    <div id="nav" class=" text_center">
       <router-link to="/home">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/element-ui-base">elementUI基本用法</router-link>
     </div>
-    <router-view class="view"></router-view>
+    <div>
+      <router-view class="view"></router-view>
+    </div>
+    
   </div>
 </template>
 
