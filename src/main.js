@@ -22,6 +22,8 @@ import * as filters from './filters'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+import eventBus from '@/utils/event-bus.js'
+Vue.prototype.$eventBus=eventBus
 new Vue({
   router,
   store,

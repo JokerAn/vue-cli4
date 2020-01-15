@@ -5,6 +5,7 @@
       <router-link to="/home">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/element-ui-base">elementUI基本用法 |</router-link>
+      <router-link to="/component-to-component">组件传参 |</router-link>
       <router-link to="/js-public">js常用</router-link>
     </div>
     <div>
@@ -16,7 +17,6 @@
 
 <script>
 export default {
-
 }
 </script>
 

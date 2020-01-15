@@ -33,7 +33,8 @@ module.exports = {
     'resolve': {
       // 配置解析别名
       'alias': {
-        '@': path.resolve(__dirname, './src')
+        '@': path.resolve(__dirname, './src'),
+        '@views': path.resolve(__dirname, './src/views')
       }
     }
   }

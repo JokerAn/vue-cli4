@@ -133,7 +133,7 @@ module.exports = {
       "singleline": "always",
       "multiline": "never"
     }],
- 
+    "vue/require-prop-types": 0 // 打开 props:["passData"] 会提示必须指定type
     "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
     "arrow-parens": 0,//箭头函数用小括号括起来
     "arrow-spacing": 0,//=>的前/后括号
