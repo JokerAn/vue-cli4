@@ -26,6 +26,8 @@
       <div style="width:100px;height:50px;padding:20px">---------------------</div>
       <ol id="b4"></ol>
       <h3 class="text">noa卡asdfa asd 撒旦法阿道夫阿斯顿发啊阿斯顿发阿凡达发送到发送到飞阿斯顿环境大</h3>
+      <h1>一个div无数个同心圆</h1>
+      <ol id="b5">一个div无数个同心圆</ol>
     </div>
   </div>
 </template>
@@ -130,16 +132,17 @@ export default {
     margin: 0;
     padding: 0;
     animation: run 10s;
-    border-radius: 50%;
-    box-shadow: 20px 0 10px red,//x轴为正数 向右移动 y=0竖直方向不动 阴影程度为模糊距离 可选。模糊距离10px（可以设置为0试试） 颜色红色
-                0 20px 10px blue,//x=0 y=20竖直方向下 阴影为10px 颜色蓝色
-                -20px 0 10px yellow,//x轴为负数 向左移动 y=0竖直方向不动 阴影程度模糊距离 可选。模糊距离为10px（可以设置为0试试） 颜色黄色
-                0 -20px 10px #000;//x=0 y=20竖直方向上 阴影为10px 颜色黑色
+    // border-radius: 50%;
+    // box-shadow: 20px 0 10px red,//x轴为正数 向右移动 y=0竖直方向不动 阴影程度为模糊距离 可选。模糊距离10px（可以设置为0试试） 颜色红色
+    //             0 20px 10px blue,//x=0 y=20竖直方向下 阴影为10px 颜色蓝色
+    //             -20px 0 10px yellow,//x轴为负数 向左移动 y=0竖直方向不动 阴影程度模糊距离 可选。模糊距离为10px（可以设置为0试试） 颜色黄色
+    //             0 -20px 10px #000;//x=0 y=20竖直方向上 阴影为10px 颜色黑色
+    box-shadow: 67px 0px 0px -24px blue,-67px 0px 0px -24px red,//x轴为正数 向右移动 y=0竖直方向不动 阴影程度0 阴影大小-67px 默认=0原始大小 颜色红色
+                0 -67px 0px -24px red,0px 67px 0px -24px red;//x=0 y=20竖直方向上 阴影为10px 颜色黑色
   }
   @keyframes run {
    0%{transform:rotate(0deg);}
-   50%{transform:rotate(36000deg);}
-   100%{transform:rotate(72000deg);}
+   100%{transform:rotate(720deg);}
   }
   #b4{
     width: 300px;
@@ -149,8 +152,13 @@ export default {
     background: linear-gradient(45deg,red 10%,blue 60%,white 80%);
     /*径向渐变radial-gradient(渐变的中心的位置, 形状(椭圆、圆) 大小, 开始的颜色-颜色占有的空间大小或比例(数字或百分比), ...,结束的颜色-颜色占有的空间大小或比例(数字或百分比))*/
     // background: radial-gradient(circle 30px ,red ,blue  );
-    
-}
+  }
+  #b5{
+    width: 300px;
+    height: 300px;
+    /*径向渐变radial-gradient(渐变的中心的位置, 形状(椭圆、圆) 大小,红色半径20px 蓝色半径40px 白色半径60px */
+    background: radial-gradient(circle,red 20px,blue 40px,yellow 60px,#fff 80px,#000 100px  );
+  }
 .text{
     width: 200px;
     height: 200px;
