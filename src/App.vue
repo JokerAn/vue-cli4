@@ -24,3 +24,11 @@
   }
 }
 </style>
+<style>
+  .bmp{
+    border:1px solid blue;
+    min-height: 500px;
+    margin:20px;
+    padding:20px;
+  }
+</style>

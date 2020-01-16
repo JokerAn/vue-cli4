@@ -60,6 +60,11 @@ const routes = [
           path: 'parent-children-ref',
           name: 'ParentChildrenRef',
           component:()=> import(/* webpackChunkName: "EmitOn" */ '@views/component-to-component/parent-children-ref')
+        },
+        {
+          path: 'provide-inject',
+          name: 'ProvideInject',
+          component:()=> import(/* webpackChunkName: "EmitOn" */ '@views/component-to-component/provide-inject')
         }
         
       ]
