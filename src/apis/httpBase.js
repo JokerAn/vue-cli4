@@ -8,9 +8,9 @@ const baseConfig = {
       'Content-type': 'application/json',
       'Accept': 'application/json'
     }
-  },
+  }
 
-  myAxios = axios.create(baseConfig)
+const myAxios = axios.create(baseConfig)
 
 // 请求前拦截
 myAxios.interceptors.request.use(

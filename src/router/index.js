@@ -54,17 +54,17 @@ const routes = [
         {
           path: 'attrs-listeners',
           name: 'AttrsListeners',
-          component:()=> import(/* webpackChunkName: "EmitOn" */ '@views/component-to-component/attrs-listeners')
+          component:()=> import(/* webpackChunkName: "AttrsListeners" */ '@views/component-to-component/attrs-listeners')
         },
         {
           path: 'parent-children-ref',
           name: 'ParentChildrenRef',
-          component:()=> import(/* webpackChunkName: "EmitOn" */ '@views/component-to-component/parent-children-ref')
+          component:()=> import(/* webpackChunkName: "ParentChildrenRef" */ '@views/component-to-component/parent-children-ref')
         },
         {
           path: 'provide-inject',
           name: 'ProvideInject',
-          component:()=> import(/* webpackChunkName: "EmitOn" */ '@views/component-to-component/provide-inject')
+          component:()=> import(/* webpackChunkName: "ProvideInject" */ '@views/component-to-component/provide-inject')
         }
         
       ]
