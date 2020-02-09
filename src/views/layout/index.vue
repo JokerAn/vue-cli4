@@ -15,7 +15,7 @@
             <span>{{item.meta.title}}</span>
           </template>
           <el-menu-item :index="i.path" v-for="i in item.children" :key='i.path' :route="{patj:i.path}"
-            :class="item.path+'/'+i.path===locationPath?'is-active':'aaaaaaaa'" :title="item.path+'/'+i.path+'==='+locationPath">
+            :class="[item.path+'/'+i.path===locationPath?'is-active':'']" >
             <router-link :to='item.path+"/"+i.path'  tag="div">{{i.meta.title}}</router-link>
           </el-menu-item>
         </el-submenu>
@@ -32,7 +32,7 @@
 import router,{routes} from '@/router'
 export default {
   created(){
-    this.routes=routes
+    
   },
   data(){
     return {
@@ -45,6 +45,7 @@ export default {
     $route: {
       handler: function(route) {
         console.log('传递过来的路由参数是',this.$route)
+        this.routes=routes
         this.locationPath=this.$route.path
         this.defaultOpeneds=['/'+this.$route.fullPath.split('/')[1]]
         console.log(this.defaultOpeneds,this.locationPath)
@@ -66,10 +67,10 @@ export default {
 
 <style lang="less" scoped>
 #header{
-  width: 100%;
   position: fixed;
   top:0;
-  left:0;
+  left:201px;
+  right:0;
   height:60px;
   background:#fff;
   border-bottom:1px solid;
@@ -77,7 +78,7 @@ export default {
 #aside{
   width:200px;
   position: fixed;
-  top:61px;
+  top:0;
   left:0;
   bottom:0;
   background:#fff;
