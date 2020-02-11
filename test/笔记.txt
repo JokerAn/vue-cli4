@@ -1,42 +1,47 @@
+vue普通页面获取路由
+定义路由页面：
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import infoRelease from '@/router/modules/info-release'
 import systemSetting from '@/router/modules/system-setting'
 import Login from '../views/login'
-import Icons from '../views/icons'
 const originalPush = VueRouter.prototype.push
 // 解决this.$router.push()跳转当前页面
-
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
 Vue.use(VueRouter)
 
-export const routes = [
+//注意是 export const linshiRoutes=[xxx] 并不是普通的 const linshiRoutes=[xxx]
+//也不是 export default const linshiRoutes=[xxx] 没有default!!!!!!
+//多了一个export 就相当于暴露出去了这个数组，在外边可以用 import 引入
+//import {linshiRoutes} from '@/router'
+
+
+//设置临时路由
+export const linshiRoutes = [
     ...infoRelease,
     ...systemSetting
 ]
 //最终路由
 let fullRoutes=[
-  ...routes,
+  ...linshiRoutes,
   {
     'path': '/login',
     'name': 'login',
     'component': Login
-  },{
-    'path': '/icons',
-    'name': 'icons',
-    'component': Icons
   },{
     //跳转路由失败 信息发布-文章管理
     'path': '*',
     'redirect': '/info-release'
   }
 ]
+
+// 生成路由函数
 const router = new VueRouter({
   'mode': 'hash',
   'base': process.env.BASE_URL,
-  routes:fullRoutes
+  routes:fullRoutes//最终路由
 })
 // 不拦截登录白名单
 const whileList = ['/login']
@@ -53,4 +58,10 @@ router.afterEach(() => {
   window.scrollTo(0, 0)
   // finish progress bar
 })
+
+// 暴露导出router 这里有一个 default！！！默认指的是router ：import router from '@/router'
 export default router
+
+最终在普通文件中使用的时候是：
+import router,{linshiRoutes} from '@/router'
+
