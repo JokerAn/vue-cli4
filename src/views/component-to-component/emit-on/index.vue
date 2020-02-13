@@ -12,8 +12,8 @@
 <script>
 import myParent from './parent.vue'
 export default {
-  name:'EmitOn',
-  components:{
+  name: 'EmitOn',
+  components: {
     myParent
   },
   //常用场景比如 审核详情页面 里面有一个按钮是 下一条 这样仅仅是 数据变化了 页面没变化 如果不需要更改变路由还好
@@ -28,14 +28,14 @@ export default {
   // },
   data(){
     return{
-      passId:null,
-      ajaxData:{age:1,name:'张三'}
+      passId: null,
+      ajaxData: {age: 1,name: '张三'}
     }
   },
-  watch:{
+  watch: {
     $route: {
       handler: function(route) {
-        this.passId=this.$route.query.someId
+        this.passId = this.$route.query.someId
         console.log(`传递过来的路由参数是${this.$route.query.someId}`)
         this.getPageList()
       }
@@ -44,14 +44,14 @@ export default {
     }
   },
   created(){
-    this.passId=this.$route.query.someId
+    this.passId = this.$route.query.someId
     console.log(`传递过来的路由参数是${this.$route.query.someId}`)
     this.getPageList()
   },
-  methods:{
+  methods: {
     getPageList(){
       this.$message('即将根据传入的id来请求页面信息')
-      this.ajaxData={age:this.passId,name:`张三${this.passId}`}
+      this.ajaxData = {age: this.passId,name: `张三${this.passId}`}
     }
   }
 }

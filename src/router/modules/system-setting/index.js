@@ -2,7 +2,7 @@ import Layout from '@/views/layout'
 export default [
   {
     path: '/system-setting',
-    redirect: '/system-setting/article-management',
+    redirect: '/system-setting/person-center',
     component: Layout,
     meta: {
       title: '系统设置',

@@ -12,19 +12,22 @@
           <i :class="item.meta.icon"></i>
           <span>{{ item.meta.title }}</span>
         </template>
-        <el-menu-item
-          v-for="i in item.children"
-          :key="i.path"
-          :index="i.path"
-          :route="{ patj: i.path }"
-          :class="[
-            item.path + '/' + i.path === locationPath ? 'is-active' : ''
-          ]"
-        >
-          <router-link :to="item.path + '/' + i.path" tag="div">{{
-            i.meta.title
-          }}</router-link>
-        </el-menu-item>
+        <template v-for="i in item.children">
+          <el-menu-item
+            v-if="!i.meta.hidden"
+            :key="i.path"
+            :index="i.path"
+            :route="{ patj: i.path }"
+            :class="[
+              item.path + '/' + i.path === locationPath ? 'is-active' : ''
+            ]"
+          >
+            <router-link :to="item.path + '/' + i.path" tag="div">{{
+              i.meta.title
+            }}</router-link>
+          </el-menu-item>
+        </template>
+        
       </el-submenu>
     </el-menu>
   </div>
@@ -51,11 +54,11 @@ export default {
   watch: {
     $route: {
       handler: function(route) {
-        console.log('传递过来的路由参数是', this.$route)
+        // console.log('传递过来的路由参数是', this.$route)
         this.routes = routes
         this.locationPath = this.$route.path
         this.defaultOpeneds = ['/' + this.$route.fullPath.split('/')[1]]
-        console.log(this.defaultOpeneds, this.locationPath)
+        // console.log(this.defaultOpeneds, this.locationPath)
       },
       immediate: true //不要写这个 这个会一进页面触发一次 会跟created中的方法重复运行
       //第一次就走created中的方法 就行了

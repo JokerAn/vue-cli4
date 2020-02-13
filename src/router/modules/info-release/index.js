@@ -50,6 +50,14 @@ export default [
         meta: {
           title: '校区管理'
         }
+      },
+      {
+        path: 'campus-menagement-campus-info',
+        component: ()=> import(/* webpackChunkName: "campusInfo" */ '@views/info-release/campus-menagement/campus-info'),
+        meta: {
+          title: '校区管理',
+          hidden: true
+        }
       }
     ]
   }

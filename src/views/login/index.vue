@@ -31,7 +31,7 @@ export default {
   },
   created(){
     if(sessionStorage.getItem('token')){
-      this.$router.push({ path: '/' })
+      this.$router.push({ path: '/system-setting/person-center' })
 
     }
   },
@@ -63,7 +63,7 @@ export default {
         sessionStorage.setItem('token',result.data.token)
         sessionStorage.setItem('userName',result.data.realname)
         sessionStorage.setItem('appId',result.data.appList[0].id)
-        this.$router.push({ path: '/' })
+        this.$router.push({ path: '/system-setting/person-center' })
 
       }).catch(err=>{
         this.loading = false

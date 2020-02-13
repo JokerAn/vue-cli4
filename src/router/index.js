@@ -13,11 +13,11 @@ VueRouter.prototype.push = function push(location) {
 Vue.use(VueRouter)
 
 export const routes = [
-    ...infoRelease,
-    ...systemSetting
+  ...infoRelease,
+  ...systemSetting
 ]
 //最终路由
-let fullRoutes=[
+let fullRoutes = [
   ...routes,
   {
     'path': '/login',
@@ -30,13 +30,13 @@ let fullRoutes=[
   },{
     //跳转路由失败 信息发布-文章管理
     'path': '*',
-    'redirect': '/info-release'
+    'redirect': '/login'
   }
 ]
 const router = new VueRouter({
   'mode': 'hash',
   'base': process.env.BASE_URL,
-  routes:fullRoutes
+  routes: fullRoutes
 })
 // 不拦截登录白名单
 const whileList = ['/login']

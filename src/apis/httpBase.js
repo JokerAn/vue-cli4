@@ -16,7 +16,7 @@ const myAxios = axios.create(baseConfig)
 myAxios.interceptors.request.use(
   config => {
     if(sessionStorage.getItem('token')){
-      config.token = sessionStorage.getItem('token')
+      config.headers.token = sessionStorage.getItem('token')
     }
     return config
   },
@@ -27,7 +27,6 @@ myAxios.interceptors.request.use(
 // 请求后拦截
 myAxios.interceptors.response.use(
   response => {
-    console.log(response)
     if(response.data.sucess === true){
       return response.data
     }

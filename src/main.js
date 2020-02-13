@@ -13,17 +13,18 @@ Vue.use(ElementUI, {
 import Icon from 'vue2-svg-icon/Icon'
 Vue.component('icon',Icon)
 Vue.config.productionTip = false
-console.log(process.env)
+// console.log(process.env)
 import myAxios from '@/apis/httpBase.js'
 import apiUrls from '@/apis/apiUrls.js'
 Vue.prototype.$axios = myAxios
 Vue.prototype.$apiUrls = apiUrls
+import './components/index.js'
 import * as filters from './filters'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 import eventBus from '@/utils/event-bus.js'
-Vue.prototype.$eventBus=eventBus
+Vue.prototype.$eventBus = eventBus
 new Vue({
   router,
   store,
