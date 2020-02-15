@@ -101,7 +101,7 @@ module.exports = {
     "no-underscore-dangle": 1,//标识符不能以_开头或结尾
     "no-unneeded-ternary": 2,//禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
     "no-unreachable": 0,//不能有无法执行的代码 0允许return、throw、continue 和 break语句之后出现不可达代码
-    "no-unused-expressions": 2,//禁止无用的表达式
+    "no-unused-expressions": 0,//禁止无用的表达式
     "no-unused-vars": [0, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
     "no-use-before-define": 2,//未定义前不能使用
     "no-useless-call": 0,//禁止不必要的call和apply
