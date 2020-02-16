@@ -27,15 +27,6 @@
         </el-select>
       </el-form-item> -->
       <el-form-item label="内容" prop="style">
-        <div id="myPageTop">
-          <table>
-            <tr>
-              <td>
-                <el-input id="tipinput" v-model="tipinput"></el-input>
-              </td>
-            </tr>
-          </table>
-        </div>
         <div id="container"></div>
       </el-form-item>
       <el-form-item label="内容" prop="style">
@@ -82,7 +73,6 @@ export default {
         1: '立即发布'
       },
       map: null,
-      tipinput: '',
       marker: null
 
     }
@@ -94,6 +84,9 @@ export default {
   },
   mounted(){
     this.createMapF()    
+  },
+  destroyed (){
+    this.mapOffClick()
   },
   methods: {
     getOrgInfoF(){
@@ -125,6 +118,7 @@ export default {
       }
       this.map = new AMap.Map('container',canshu)
       this.mapBindClick()
+      // 获取当前定位
       this.map.plugin(['AMap.Geolocation'], ()=> {
         let geolocation = new AMap.Geolocation({
           timeout: 10000 //超过10秒后停止定位，默认：无穷大
@@ -140,24 +134,39 @@ export default {
         })
       })
     },
-    // 设置标记点
+    // 只允许设置一个标记点
     setMark(position = [116.405467, 39.907761]){
+      // 如果有标记点了 就删除标记点重新添加
       this.marker && this.map.remove(this.marker)
+      // 生成一个标记点
       this.marker = new AMap.Marker({
-        icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
+        icon: require('@/assets/images/mark-gd.png'),
         position
       })
+      // 挂载标记点
       this.map.add(this.marker)
-      this.map.plugin('AMap.Geocoder', () =>{
-        new AMap.Geocoder().getAddress(position,(status,result)=>{
-          if (status === 'complete' && result.info === 'OK') {
-            console.log(result.regeocode.formattedAddress)
-            this.orgInfo.address = result.regeocode.formattedAddress
-          }
+      // 将标记点转换为中文街道文字
+      this.LngLatBecomeChinaAdress(position).then(chinaAdress=>{
+        this.orgInfo.address = chinaAdress.regeocode.formattedAddress
+        this.map.setFitView()
+      })
+
+    },
+    // 将经纬度转为中国街道
+    LngLatBecomeChinaAdress(LngLat){
+      return new Promise((resolve,reject)=>{
+        this.map.plugin('AMap.Geocoder', () =>{
+          new AMap.Geocoder().getAddress(LngLat,(status,result)=>{
+            if (status === 'complete' && result.info === 'OK') {
+              console.log(result.regeocode.formattedAddress)
+              resolve(result)
+            }else{
+              reject(result)
+            }
+          })
         })
       })
-      this.map.setFitView()
-
+      
     },
     // 将中国街道转为经纬度
     chinaAdressbecomeLngLat(chinaAdress){
@@ -168,7 +177,7 @@ export default {
               console.log(result)
               resolve(result) 
             }else{
-              reject()
+              reject(result)
             }
           })
         })
@@ -199,5 +208,6 @@ export default {
 #container{
     height:300px;
     width:800px;
+    border:1px solid #aaa;
   }
 </style>
