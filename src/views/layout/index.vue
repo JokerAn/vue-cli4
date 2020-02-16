@@ -6,7 +6,7 @@
     <div id="content-right" :class="[openOrClose ? 'width64' : 'width200']">
       <my-header id="header" @changeAsideWidth="changeAsideWidthF"></my-header>
       <div id="mainView">
-        <router-view id="view"></router-view>
+        <router-view></router-view>
       </div>
     </div>
     

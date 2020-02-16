@@ -1,5 +1,5 @@
 <template>
-  <div id="campus-info">
+  <div id="campus-info" class="campus-info">
     <el-form
       ref="ruleForm"
       :model="orgInfo"
@@ -26,7 +26,7 @@
           ></el-option>
         </el-select>
       </el-form-item> -->
-      <el-form-item label="内容" prop="style">
+      <el-form-item label="地图" prop="style">
         <div id="container"></div>
       </el-form-item>
       <el-form-item label="内容" prop="style">
@@ -34,10 +34,12 @@
       </el-form-item>
 
     </el-form>
-    <div>
-      <el-button @click="save()">保存</el-button>
-      <el-button>返回</el-button>
+    <div class="btns">
+      <el-button size="large" type="success" @click="save()">保存</el-button>
+      <el-button size="large" type="primary" style="margin-left:50px;">返回</el-button>
     </div>
+    <el-button size="large" type="primary" class="goBack">返回</el-button>
+
   </div>
 </template>
 
@@ -201,11 +203,21 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-#campus-info{
-  padding-top:30px;
+  #campus-info{
+    position: relative;
+    padding-top:30px;
+    .btns{
+      padding-left:300px;
+      margin-bottom:20px;
+    }
+    .goBack{
+      top: 20px;
+      right: 40px;
+      position: absolute;
+    }
   
-}
-#container{
+  }
+  #container{
     height:300px;
     width:800px;
     border:1px solid #aaa;
