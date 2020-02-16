@@ -29,11 +29,11 @@ module.exports = {
     },
     proxy: {
       //配置跨域
-      '/myapi': {
+      '/cms': {
         target: process.env.VUE_APP_BASE_API,
         changOrigin: true,
         pathRewrite: {
-          '^/myapi': ''
+          '^/cms': '/cms'
         }
       }
     }
