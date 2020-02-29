@@ -1,13 +1,9 @@
 
-
+//引入prerender-spa-plugin插件开始 yarn add prerender-spa-plugin
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
-// eslint-disable-next-line no-unused-vars
 const webpack = require('webpack')
-
-
-
-
+//引入prerender-spa-plugin插件结束
 
 const path = require('path')
 
@@ -39,26 +35,6 @@ module.exports = {
       'errors': true
     }
   },
-  'devServer': {
-    // 配置服务器
-    'port': 7788,
-    'open': true,
-    'https': false,
-    'overlay': {
-      'warnings': true,
-      'errors': true
-    },
-    proxy: {
-      //配置跨域
-      '/cms': {
-        target: process.env.VUE_APP_BASE_API,
-        changOrigin: true,
-        pathRewrite: {
-          '^/cms': '/cms'
-        }
-      }
-    }
-  },
   // 'configureWebpack': {
   //   // 覆盖webpack默认配置的都在这里
   //   'resolve': {
@@ -80,7 +56,8 @@ module.exports = {
         }
       }
     }
-    //正式环境才需要用prerender-spa-plugin这个插件 ！测试环境不用 
+    //引入prerender-spa-plugin插件开始
+    //正式环境才需要用prerender-spa-plugin这个插件 ！测试环境不用seo
     if (process.env.NODE_ENV === 'production'){
       finallyObject.plugins= [
         new PrerenderSPAPlugin({
@@ -89,7 +66,7 @@ module.exports = {
           // 这个目录只能有一级，如果目录层次大于一级，在生成的时候不会有任何错误提示，在预渲染的时候只会卡着不动。
           staticDir: path.join(__dirname, process.env.VUE_APP_OUTPUTDIR),
         
-          // 对应自己的路由文件，比如a有参数，就需要写成 /a/param1。
+          // 对应自己的路由文件相对哪个进行eso优化写那个，比如a有参数，就需要写成 /a/param1。
           routes: [
             '/','/home', '/login', '/about','/component-to-component','/component-to-component/props-emit',
             '/component-to-component/emit-on','/component-to-component/parent-children-ref',
@@ -110,7 +87,50 @@ module.exports = {
       ]
       return finallyObject
     }
+    //引入prerender-spa-plugin插件结束
     
     return finallyObject
   }
 }
+// main.js
+
+// new Vue({
+//   router,
+//   store,
+//   'render': h => h(App),
+//   //添加到这里,这里的render-event和vue.config.js里面的renderAfterDocumentEvent配置名称一致
+//     mounted () {
+//         document.dispatchEvent(new Event('render-event'))
+//       }
+// }).$mount('#app')
+
+// 引入vue-meta-info yarn add vue-meta-info
+// 普通文件 xxx.vue 添加metaInfo
+  //<script>
+  // export default {
+  //   name: 'home',
+  //   metaInfo: {
+  //     title: '大王小丑培训home页面', // set a title
+  //     meta: [{             // set meta
+  //       name: 'keyWords',
+  //       content: '大王小丑,培训,home页面'
+  //     },
+  //     {
+  //       name: 'description',
+  //       content: '大王小丑,培训,home页面'
+  //     }],
+  //     link: [{ // set link
+  //       rel: 'asstes',
+  //       href: 'https://assets-cdn.github.com/'
+  //     }]
+  //   },
+  //   'components': {
+  //     HelloWorld
+  //   },
+  //   data() {
+  //     return {
+  //       'msg': process.env.VUE_APP_MSG,
+  //     }
+  //   }
+  // }
+  // </script>
