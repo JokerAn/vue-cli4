@@ -39,6 +39,26 @@ module.exports = {
       'errors': true
     }
   },
+  'devServer': {
+    // 配置服务器
+    'port': 7788,
+    'open': true,
+    'https': false,
+    'overlay': {
+      'warnings': true,
+      'errors': true
+    },
+    proxy: {
+      //配置跨域
+      '/cms': {
+        target: process.env.VUE_APP_BASE_API,
+        changOrigin: true,
+        pathRewrite: {
+          '^/cms': '/cms'
+        }
+      }
+    }
+  },
   // 'configureWebpack': {
   //   // 覆盖webpack默认配置的都在这里
   //   'resolve': {

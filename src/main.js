@@ -24,6 +24,8 @@ Object.keys(filters).forEach(key => {
 })
 import eventBus from '@/utils/event-bus.js'
 Vue.prototype.$eventBus=eventBus
+import axios from 'axios'
+Vue.prototype.$axioss=axios
 
 import MetaInfo from 'vue-meta-info'
 Vue.use(MetaInfo)

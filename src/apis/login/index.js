@@ -7,3 +7,9 @@ export function loginApi(data){
     data
   })
 }
+export function localFileApi(data){
+  return myAxios({
+    url: '/assets/test-json/index.json',
+    method: 'get'
+  })
+}
