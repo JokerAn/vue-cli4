@@ -1,16 +1,16 @@
 <template>
   <div>
-      <div class="icon-one" v-for="item in icons" :key='item'>
-        <icon :name="item" :w="50" :h="50"></icon>
-        <p>{{item}}</p>
-      </div>
+    <div v-for="item in icons" :key="item" class="icon-one">
+      <icon :name="item" :w="50" :h="50"></icon>
+      <p>{{ item }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 import icons from './icons-svg'
 export default {
-  name:'Icons',
+  name: 'Icons',
   data(){
     return {
       icons
