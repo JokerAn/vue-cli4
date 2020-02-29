@@ -93,7 +93,6 @@ export default {
 #login{
   width:100%;
   height:100vh;
-  background:url(~@/assets/images/login.jpg)no-repeat center center;
   background-size: 100% 100%;
   .name-pwd{
     background:#fff;

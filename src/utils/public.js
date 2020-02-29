@@ -23,3 +23,7 @@ export function chainDate(times, fengefu) {
     nian + fengefu + yue + fengefu + ri + ' ' + shi + ':' + fen + ':' + miao
   )
 }
+export function noValue(res){
+  let result = ['', null, undefined].includes(res);
+  return result
+}

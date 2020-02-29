@@ -1,6 +1,6 @@
 const apiUrls = {
-  'login':{
-    'login':'/shiro-api/login'
+  'login': {
+    'login': '/shiro-api/login'
   }
 }
 

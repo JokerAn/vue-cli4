@@ -2,19 +2,22 @@ import axios from 'axios'
 import { Message } from 'element-ui'
 import $router from '@/router'
 const baseConfig = {
-    'baseURL':process.env.VUE_APP_BASE_API,
-    'tiemout':10000,
-    'headers':{
-      'Content-type': 'application/json',
-      'Accept': 'application/json'
-    }
+  // 'baseURL': process.env.VUE_APP_BASE_API,
+  'tiemout': 10000,
+  'headers': {
+    'Content-type': 'application/json',
+    'Accept': 'application/json'
   }
+}
 
 const myAxios = axios.create(baseConfig)
 
 // 请求前拦截
 myAxios.interceptors.request.use(
   config => {
+    if(sessionStorage.getItem('token')){
+      config.headers.token = sessionStorage.getItem('token')
+    }
     return config
   },
   error =>{
@@ -24,8 +27,7 @@ myAxios.interceptors.request.use(
 // 请求后拦截
 myAxios.interceptors.response.use(
   response => {
-    console.log(response)
-    if(response.data.status==='SUCCESS'){
+    if(response.data.sucess === true){
       return response.data
     }
     Message({
