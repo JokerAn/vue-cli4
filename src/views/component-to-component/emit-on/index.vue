@@ -12,6 +12,21 @@
 <script>
 import myParent from './parent.vue'
 export default {
+  metaInfo: {
+    title: '大王小丑培训emit-on页面', // set a title
+    meta: [{             // set meta
+      name: 'keyWords',
+      content: '大王小丑,培训,emit-on页面'
+    },
+    {
+      name: 'description',
+      content: '大王小丑,培训,emit-on页面'
+    }],
+    link: [{ // set link
+      rel: 'asstes',
+      href: 'https://assets-cdn.github.com/'
+    }]
+  },
   name:'EmitOn',
   components:{
     myParent

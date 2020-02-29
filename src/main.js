@@ -24,8 +24,16 @@ Object.keys(filters).forEach(key => {
 })
 import eventBus from '@/utils/event-bus.js'
 Vue.prototype.$eventBus=eventBus
+
+import MetaInfo from 'vue-meta-info'
+Vue.use(MetaInfo)
+
 new Vue({
   router,
   store,
-  'render': h => h(App)
+  'render': h => h(App),
+  //添加到这里,这里的render-event和vue.config.js里面的renderAfterDocumentEvent配置名称一致
+    mounted () {
+        document.dispatchEvent(new Event('render-event'))
+      }
 }).$mount('#app')
