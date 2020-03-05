@@ -35,6 +35,19 @@ module.exports = {
       'errors': true
     }
   },
+  // rem 的配置
+  css: {
+    loaderOptions: {
+      css: {},
+      postcss: {
+        plugins: [
+          require("postcss-px2rem")({
+            remUnit: 37.5
+          })
+        ]
+      }
+    }
+  },
   // 'configureWebpack': {
   //   // 覆盖webpack默认配置的都在这里
   //   'resolve': {

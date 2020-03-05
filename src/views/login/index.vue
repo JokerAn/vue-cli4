@@ -1,7 +1,10 @@
 <template>
   <div id="login">
-    <h1>{{LoginDat.data.data.name}}</h1>
-    <h2>{{LoginDat.data.data.msg}}</h2>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <h1 class="font7">{{LoginData.data.data.name}}</h1>
+    <h2 class="font7">{{LoginData.data.data.msg}}</h2>
     <div class="name-pwd">
       <h3>CMS管理系统</h3>
       <p>
@@ -13,7 +16,7 @@
         <el-input v-model="password" type="password"></el-input>
       </p>
       <ol>
-        <el-button :loading="loading" style="width:342px;" size="large"
+        <el-button :loading="loading" style="width:370px;" size="large"
                    @click="loginF">确定</el-button>
       </ol>
     </div>
@@ -45,7 +48,11 @@ export default {
       username: 'haoyue.ge@ambow.com',
       password: '111111',
       loading: false,
-      LoginDat:{}
+      LoginData:{
+        data:{
+          data:{}
+        }
+      }
     }
   },
   created(){
@@ -53,9 +60,9 @@ export default {
     //   this.$router.push({ path: '/system-setting/person-center' })
 
     // }
-    setTimeout(()=>{
-this.test()
-    },1000)
+    // setTimeout(()=>{
+    //   this.test()
+    // },1000)
     
   },
   methods: {
@@ -96,14 +103,29 @@ this.test()
     test(){
       this.$axioss.get('/test-json/index.json').then((res)=>{
         console.log(res)
-        this.LoginDat=res
+        this.LoginData=res
       })
     }
   }
 }
 </script>
-
+<style >
+.font7{
+  font-size:16px;
+}
+.box{
+  border:1px solid;
+  box-sizing: border-box;
+  width:100px;
+  height:50px;
+  display: inline-block;
+}
+.box3{
+  width:175px;
+}
+</style>
 <style lang="less" scoped>
+
 #login{
   width:100%;
   height:100vh;

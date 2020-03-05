@@ -12,6 +12,10 @@ Vue.use(ElementUI, {
 // svg引入
 import Icon from 'vue2-svg-icon/Icon'
 Vue.component('icon',Icon)
+
+// 导入 rem 的 js, 动态的设置了, 不同屏幕的html根元素的 font-size
+import 'lib-flexible'
+
 Vue.config.productionTip = false
 console.log(process.env)
 import myAxios from '@/apis/httpBase.js'
