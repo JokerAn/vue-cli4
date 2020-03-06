@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="content-left">
-      <my-aside :open-or-close='openOrClose'></my-aside>
+      <my-aside :open-or-close="openOrClose"></my-aside>
     </div>
     <div id="content-right" :class="[openOrClose ? 'width64' : 'width200']">
       <my-header id="header" @changeAsideWidth="changeAsideWidthF"></my-header>
@@ -14,30 +14,30 @@
 </template>
 
 <script>
-import MyHeader from "./header";
-import MyAside from "./aside";
+import MyHeader from './header'
+import MyAside from './aside'
 export default {
   components: {
     MyHeader,
-    MyAside,
+    MyAside
   },
-  created() {},
   data() {
     return {
       routes: [],
       defaultOpeneds: [],
-      locationPath: "",
+      locationPath: '',
       //左侧默认200px
       openOrClose: false
-    };
+    }
   },
+  created() {},
 
   methods: {
     changeAsideWidthF(res) {
-      this.openOrClose = res;
+      this.openOrClose = res
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

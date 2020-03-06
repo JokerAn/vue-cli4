@@ -43,16 +43,24 @@ input[type="button"], input[type="submit"], input[type="search"], input[type="re
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.text_center{text-align: center}
-.anclear:after {
+.text-center{text-align: center}
+.an-clear:after {
   content: "";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-.goodposition{
+.goodposition-a{
   position: absolute;top:50%;left:50%;
+  -webkit-transform:translate(-50%,-50%) ;
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform:translate(-50%,-50%) ;
+  -o-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.goodposition-f{
+  position: fixed;top:50%;left:50%;
   -webkit-transform:translate(-50%,-50%) ;
   -moz-transform: translate(-50%,-50%);
   -ms-transform:translate(-50%,-50%) ;

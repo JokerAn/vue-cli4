@@ -1,25 +1,25 @@
 <template>
-  <div class='header'>
-    <a class="changeAsideWidth"  @click='changeAsideWidth()'>
-      <icon v-show='!leftOpen' name="close-left" :w="30" :h="30"></icon>
-      <icon v-show='leftOpen' name="open-left" :w="30" :h="30"></icon>
+  <div class="header">
+    <a class="changeAsideWidth" @click="changeAsideWidth()">
+      <icon v-show="!leftOpen" name="close-left" :w="30" :h="30"></icon>
+      <icon v-show="leftOpen" name="open-left" :w="30" :h="30"></icon>
     </a>
-      我是header
+    我是header
   </div>
 </template>
 
 <script>
 export default {
-  name:'MyHeader',
+  name: 'MyHeader',
   data(){
     return{
-      leftOpen:false
+      leftOpen: false
     }
   },
   created(){},
-  methods:{
+  methods: {
     changeAsideWidth(){
-      this.leftOpen=!this.leftOpen
+      this.leftOpen = !this.leftOpen
       this.$emit('changeAsideWidth',this.leftOpen)
     }
   }

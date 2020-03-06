@@ -1,5 +1,5 @@
 <template>
-  <div class="about  text_center">
+  <div class="about  text-center">
     <img id="a3" src="@/assets/logo.png" alt size="2"
          data-aaa="a" data-aaaa="a" class="a1" title="a"
          data-aa="a"
@@ -26,6 +26,7 @@
       <el-button type="success" plain>成功按钮</el-button>
       <el-button type="info" plain>信息按钮</el-button>
       <el-button type="warning" plain>警告按钮</el-button>
+      
       <el-button type="danger" plain>危险按钮</el-button>
     </el-row>
     <h2>svg</h2>
@@ -33,6 +34,13 @@
           :h="100"></icon>
     <icon name="shtg" :w="100" :h="100"></icon>
     <icon name="aaa" :w="100" :h="100"></icon>
+    
+    <span>
+      微信<icon name="wx" :w="40"></icon>
+    </span>
+    <span class="wx" title="用css设置图标为40px">
+      微信<icon name="wx"></icon>
+    </span>
     <p>阿斯顿发</p>
 
     <el-select v-model="values" class="a10" filterable
@@ -52,25 +60,27 @@
         </div>
       </div>
 
-      <el-button type="success" @click="loginF">登录axios.post</el-button>
       <el-button type="success" @click="loginF2">登录axios({...})</el-button>
 
     </div>
   </div>
 </template>
 <script>
+import {loginApi} from '@apis/login'
+
 import { chainDate } from '@/utils/public'
 export default {
   data() {
     return {
-      'userInfo':{},
-      'login':{
-        'anonymouslogin':true,
-        'loginName':'wei.xia@ambow.com',
-        'password':'Ambow99999999'
+      'userInfo': {},
+      'login': {
+        'anonymouslogin': true,
+        'loginName': 'jinzhe.li@ambow.com',
+        'password': 'Ambow99999999',
+        imgcode: 1
       },
       'baseUrl': process.env.VUE_APP_BASE_API,
-      'nowTime':new Date()-0,
+      'nowTime': new Date() - 0,
       'options': [
         {
           'value': '选项1',
@@ -94,25 +104,16 @@ export default {
     getImgcode() {
       this.nowTime = new Date().getTime()
     },
-    loginF() {
-      this.$axios.post(this.$apiUrls.login.login,this.login).then(result=>{
-        console.log(result)
-        result.data.userInfo.sexJokerAn = 1
-        this.userInfo = result.data.userInfo
-      }).catch(err => {
-        console.log(err)
-        this.getImgcode()
-      })
-    },
     loginF2() {
-      this.$axios({
-        'method':'post',
-        'url':this.$apiUrls.login.login,
-        'data':this.login
-      }).then(result=>{
+      loginApi(this.login).then(result=>{
         console.log(result)
         result.data.userInfo.sexJokerAn = 1
         this.userInfo = result.data.userInfo
+        this.$message({
+          'type': 'success',
+          'message': result.message
+        })
+        this.getImgcode()
       }).catch(err => {
         console.log(err)
         this.getImgcode()
@@ -170,5 +171,8 @@ export default {
   input {
     font-size: 30px;
   }
+}
+.wx svg{
+       width:40px
 }
 </style>

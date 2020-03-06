@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
   'publicPath': '/', // 公共路径
   'outputDir': process.env.VUE_APP_OUTPUTDIR, // 不同的环境打不同包名
-  'lintOnSave': false, // 关闭eslint
+  // 'lintOnSave': false, // 关闭eslint
 
   //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录默认：''
   'assetsDir': 'assets',
@@ -34,7 +34,8 @@ module.exports = {
       // 配置解析别名
       'alias': {
         '@': path.resolve(__dirname, './src'),
-        '@views': path.resolve(__dirname, './src/views')
+        '@views': path.resolve(__dirname, './src/views'),
+        '@apis': path.resolve(__dirname, './src/apis')
       }
     }
   }
