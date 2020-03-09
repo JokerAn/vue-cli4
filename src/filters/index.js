@@ -15,8 +15,11 @@ export function getChineseLocalTime(input) {
   }
   let date = new Date(input)
   const year = date.getFullYear()
+
   let month = date.getMonth() + 1
+
   let day = date.getDate()
+
   month = month < 10 ? '0' + month : month
   day = day < 10 ? '0' + day : day
   date = year + '年' + month + '月' + day + '日'
@@ -43,24 +46,27 @@ export function money(s) {
   // 判断数字是正数还是负数
   let minus = false
   // 数字转字符串
-  s = s + ''
+
+  s = String(s)
   if (s.substring(0, 1) === '-') {
     minus = true
-    s = parseFloat(s.substring(1).replace(/[^\d\.-]/g, '')).toFixed(2) + ''
+    s = String(parseFloat(s.substring(1).replace(/[^\d\.-]/g, '')).toFixed(2))
   } else {
-    s = parseFloat(s.replace(/[^\d\.-]/g, '')).toFixed(2) + ''
+    s = String(parseFloat(s.replace(/[^\d\.-]/g, '')).toFixed(2))
   }
   const l = s.split('.')[0].split('').reverse()
   const r = s.split('.')[1]
+
   let t = ''
+
   for (let i = 0; i < l.length; i++) {
-    t += l[i] + ((i + 1) % 3 === 0 && (i + 1) !== l.length ? ',' : '')
+    t += l[i] + ((i + 1) % 3 === 0 && i + 1 !== l.length ? ',' : '')
   }
   if (minus) {
     return '-' + t.split('').reverse().join('') + '.' + r
-  } else {
-    return t.split('').reverse().join('') + '.' + r
-  }
+  } 
+  return t.split('').reverse().join('') + '.' + r
+  
 }
 
 /**
@@ -70,15 +76,22 @@ export function money(s) {
  *   @param {string} tail  超出显示内容
  */
 export function ellipsis(value, max, tail) {
-  if (!value) return
-  if (!max) return value
-  if (value.length <= max) return value
+  if (!value) {
+    return
+  }
+  if (!max) {
+    return value
+  }
+  if (value.length <= max) {
+    return value
+  }
   value = value.substr(0, max)
   return value + (tail || '.')
 }
 // 未审批 审批中 已审批 已驳回
 export function approvalType(value) {
   let text = ''
+
   switch (value) {
     case 0:
       text = '未审批'
@@ -99,9 +112,12 @@ export function approvalType(value) {
 
 // 0未知1男2女
 export function sex(value, index) {
-  if (value === null) { value = 0 }
+  if (value === null) {
+    value = 0 
+  }
   value = Number(value)
   let text = ''
+
   switch (value) {
     case 1:
       text = '男'

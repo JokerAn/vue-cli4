@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Message } from 'element-ui'
 import $router from '@/router'
 const baseConfig = {
-  'baseURL': process.env.VUE_APP_BASE_API,
+  // 'baseURL': process.env.VUE_APP_BASE_API,
   'tiemout': 10000,
   'headers': {
     'Content-type': 'application/json',

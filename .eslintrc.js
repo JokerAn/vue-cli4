@@ -101,7 +101,7 @@ module.exports = {
     "no-underscore-dangle": 1,//标识符不能以_开头或结尾
     "no-unneeded-ternary": 2,//禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
     "no-unreachable": 0,//不能有无法执行的代码 0允许return、throw、continue 和 break语句之后出现不可达代码
-    "no-unused-expressions": 2,//禁止无用的表达式
+    "no-unused-expressions": 0,//禁止无用的表达式
     "no-unused-vars": [0, {"vars": "all", "args": "after-used"}],//不能有声明后未被使用的变量或参数
     "no-use-before-define": 2,//未定义前不能使用
     "no-useless-call": 0,//禁止不必要的call和apply
@@ -123,7 +123,7 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',//Expected new line break before and after html tags”?
     'vue/multiline-html-element-content-newline': 'off',//Expected new line break before and after html tags”?
     "vue/max-attributes-per-line": ["error", {//每一行最多5个属性
-      "singleline": 3,
+      "singleline": 5,
       "multiline": {
         "max": 4,
         "allowFirstLine": true
@@ -133,7 +133,7 @@ module.exports = {
       "singleline": "always",
       "multiline": "never"
     }],
-    "vue/require-prop-types": 0 // 打开 props:["passData"] 会提示必须指定type
+    "vue/require-prop-types": 0, // 打开 props:["passData"] 会提示必须指定type
     "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
     "arrow-parens": 0,//箭头函数用小括号括起来
     "arrow-spacing": 0,//=>的前/后括号
@@ -167,7 +167,7 @@ module.exports = {
     }],//缩进风格
     'linebreak-style': [0, 'error', 'windows'],
     "init-declarations": 0,//声明时必须赋初值
-    "key-spacing": [0, { "beforeColon": false, "afterColon": true }],//对象字面量中冒号的前后空格
+    "key-spacing": [2, { "beforeColon": false, "afterColon": true }],//对象字面量中冒号的前后空格
     "lines-around-comment": 0,//行前/行后备注
     "max-depth": [0, 4],//嵌套块深度
     "max-len": [0, 80, 4],//字符串最大长度
@@ -198,8 +198,8 @@ module.exports = {
     "sort-vars": 0,//变量声明时排序
     "space-after-keywords": [0, "always"],//关键字后面是否要空一格
     "space-before-blocks": [0, "always"],//不以新行开始的块{前面要不要有空格
-    "space-in-parens": [0, "never"],//小括号里面要不要有空格
-    "space-infix-ops": 0,//中缀操作符周围要不要有空格
+    "space-in-parens": [2, "never"],//小括号里面要不要有空格
+    "space-infix-ops": 2,//中缀操作符周围要不要有空格
     "space-return-throw-case": 0,//return throw case后面要不要加空格
     "space-unary-ops": [0, { "words": true, "nonwords": false }],//一元运算符的前/后要不要加空格
     "spaced-comment": 0,//注释风格要不要有空格什么的

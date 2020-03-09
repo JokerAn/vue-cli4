@@ -2,7 +2,7 @@ body{
   margin: 0;
   padding:0;
 }
-li,ul{
+li,ul,ol{
   list-style: none;
   margin: 0;
   padding: 0;
@@ -59,8 +59,19 @@ input[type="button"], input[type="submit"], input[type="search"], input[type="re
   -o-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 }
-html body .pop_success_btn_left {
-  // 给elementUi弹出框取消按钮加class=' xxx pop_success_btn_left'让他去最右边
+html body .pop-success-btn-left {
+  // 给elementUi弹出框取消按钮加class=' xxx pop-success-btn-left'让他去最右边
   float: right;
   margin-left: 15px;
 }
+
+
+
+
+// 覆盖elementui的样式开始
+body{
+  /deep/ .el-table th>.cell{
+    color:#555;
+  }
+}
+// 覆盖elementui的样式结束
