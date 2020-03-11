@@ -23,7 +23,8 @@ Object.keys(filters).forEach(key => {
 })
 import eventBus from '@/utils/event-bus.js'
 Vue.prototype.$eventBus = eventBus
-import MetaInfo from 'vue-meta-info'
+
+import MetaInfo from 'vue-meta-info'
 Vue.use(MetaInfo)
 new Vue({
   router,

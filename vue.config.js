@@ -83,7 +83,7 @@ module.exports = {
         
           // 对应自己的路由文件相对哪个进行eso优化写那个，比如a有参数，就需要写成 /a/param1。
           routes: [
-            '/','/login','/js-public'
+            '/icons','/system-setting/person-center'
           ],
         
         

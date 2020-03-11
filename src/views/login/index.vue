@@ -1,7 +1,5 @@
 <template>
   <div id="login">
-    <h1>{{ LoginDat.data.data.name }}</h1>
-    <h2>{{ LoginDat.data.data.msg }}</h2>
     <div class="name-pwd">
       <h3>CMS管理系统</h3>
       <p>
@@ -26,14 +24,14 @@ import {noValue } from '@/utils/public'
 export default {
   
   metaInfo: {
-    title: '大王小丑培训登录页面', // set a title
+    title: '啊啊啊啊啊啊啊啊啊啊', // set a title
     meta: [{ // set meta
       name: 'keyWords',
-      content: '大王小丑,培训,登录页面'
+      content: '啊啊啊啊啊啊啊啊啊啊'
     },
     {
       name: 'description',
-      content: '大王小丑,培训'
+      content: '啊啊啊啊啊啊啊啊啊啊'
     }],
     link: [{ // set link
       rel: 'asstes',
@@ -53,10 +51,6 @@ export default {
     //   this.$router.push({ path: '/system-setting/person-center' })
 
     // }
-    setTimeout(()=>{
-      this.test()
-    },1000)
-    
   },
   methods: {
     loginF(){
@@ -86,17 +80,11 @@ export default {
         sessionStorage.setItem('token',result.data.token)
         sessionStorage.setItem('userName',result.data.realname)
         sessionStorage.setItem('appId',result.data.appList[0].id)
-        // this.$router.push({ path: '/system-setting/person-center' })
+        this.$router.push({ path: '/system-setting/person-center' })
         
 
       }).catch(err=>{
         this.loading = false
-      })
-    },
-    test(){
-      this.$axioss.get('/test-json/index.json').then((res)=>{
-        console.log(res)
-        this.LoginDat = res
       })
     }
   }
@@ -107,6 +95,7 @@ export default {
 #login{
   width:100%;
   height:100vh;
+  background: url("~@/assets/images/login.jpg")no-repeat center center;
   background-size: 100% 100%;
   .name-pwd{
     background:#fff;
