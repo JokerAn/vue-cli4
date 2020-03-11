@@ -58,18 +58,22 @@ module.exports = {
   configureWebpack: config => {
     // 覆盖webpack默认配置的都在这里
     let finallyObject = {
-        'resolve': {
+      'resolve': {
         // 配置解析别名
-          'alias': {
-            '@': path.resolve(__dirname, './src'),
-            '@views': path.resolve(__dirname, './src/views')
-          }
+        'alias': {
+          '@': path.resolve(__dirname, './src'),
+          '@views': path.resolve(__dirname, './src/views')
         }
       },
+      externals: {
+        AMap: 'AMap'
+      }
+    }
+    
     //引入prerender-spa-plugin插件开始
     //正式环境才需要用prerender-spa-plugin这个插件 ！测试环境不用seo
 
-    if ( process.env.NODE_ENV === 'production' ){
+    if (process.env.NODE_ENV === 'production'){
       finallyObject.plugins = [
         new PrerenderSPAPlugin({
           // 生成文件的路径，也可以与webpakc打包的一致。
@@ -79,9 +83,7 @@ module.exports = {
         
           // 对应自己的路由文件相对哪个进行eso优化写那个，比如a有参数，就需要写成 /a/param1。
           routes: [
-            '/','/home', '/login', '/about','/component-to-component','/component-to-component/props-emit',
-            '/component-to-component/emit-on','/component-to-component/parent-children-ref',
-            '/component-to-component/provide-inject','/js-public'
+            '/','/login','/js-public'
           ],
         
         
