@@ -4,16 +4,16 @@
     <!-- <h3>{{name}},{{hobby}}</h3> -->
     <!-- <h3>parentData:{{parentData}},theme:{{theme}},city:{{city}}</h3> -->
     <ul>
-      <li>bus:{{bus}}</li>
-      <li>message:{{message}}</li>
-      <li>myArray:{{myArray}}</li>
+      <li>bus:{{ bus }}</li>
+      <li>message:{{ message }}</li>
+      <li>myArray:{{ myArray }}</li>
     </ul>
     <div class="children">
       <div class="grandson1">
         <my-grandson1></my-grandson1>
       </div>
       <div class="grandson2">
-        <my-grandson2 ></my-grandson2>
+        <my-grandson2></my-grandson2>
       </div>
     </div>
     
@@ -21,9 +21,13 @@
 </template>
 
 <script>
-import myGrandson1 from "./grandson1"
-import myGrandson2 from "./grandson2"
+import myGrandson1 from './grandson1'
+import myGrandson2 from './grandson2'
 export default {
+  components: {
+    myGrandson1,
+    myGrandson2
+  },
   data(){
     return{}
   },
@@ -41,17 +45,13 @@ export default {
   // },
 
   //第三种
-  inject:{
-    bus:{default: () => ({})},
-    message:{default: () => ({})},
-    myArray:{default: () => ({})}
-  },
-  components:{
-    myGrandson1,
-    myGrandson2
+  inject: {
+    bus: {default: () => ({})},
+    message: {default: () => ({})},
+    myArray: {default: () => ({})}
   },
   created(){},
-  methods:{}
+  methods: {}
 }
 </script>
 

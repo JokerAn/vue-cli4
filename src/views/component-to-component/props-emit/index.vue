@@ -11,15 +11,15 @@
 <script>
 import myParent from '@/views/component-to-component/props-emit/parent.vue'
 export default {
-  name:'PropsEmit',
-  components:{
+  name: 'PropsEmit',
+  components: {
     myParent
   },
   data(){
     return{}
   },
   created(){},
-  methods:{
+  methods: {
 
   }
 }

@@ -14,21 +14,21 @@
 <script>
 export default {
   metaInfo: {
-    title: '大王小丑培训component-to-component页面', // set a title
-    meta: [{             // set meta
-      name: 'keyWords',
-      content: '大王小丑,培训,component-to-component页面'
-    },
-    {
-      name: 'description',
-      content: '大王小丑,培训,component-to-component页面'
-    }],
-    link: [{ // set link
-      rel: 'asstes',
-      href: 'https://assets-cdn.github.com/'
-    }]
-  },
-  methods:{
+    title: '大王小丑培训component-to-component页面', // set a title
+    meta: [{ // set meta
+      name: 'keyWords',
+      content: '大王小丑,培训,component-to-component页面'
+    },
+    {
+      name: 'description',
+      content: '大王小丑,培训,component-to-component页面'
+    }],
+    link: [{ // set link
+      rel: 'asstes',
+      href: 'https://assets-cdn.github.com/'
+    }]
+  },
+  methods: {
     gotoPage(res) {
       console.log(res)
       this.$router.push({

@@ -14,22 +14,22 @@
 import myChildren from './children.vue'
 
 export default {
-  components:{
+  components: {
     myChildren
   },
   data(){
     return{
-      parentMessage:'我是父组件中的message=110'
+      parentMessage: '我是父组件中的message=110'
     }
   },
   created(){
     this.$nextTick(() => {
       this.$eventBus.$on('emit-one-chidlren-to-parent',(res)=>{
         this.$message({
-          type:'success',
-          message:`我接收到了子组件传来的数据，数据是：${res}`
+          type: 'success',
+          message: `我接收到了子组件传来的数据，数据是：${res}`
         })
-        this.parentMessage=res
+        this.parentMessage = res
       })
     })
     
@@ -37,9 +37,9 @@ export default {
   destroyed(){
     this.$eventBus.$off('emit-one-chidlren-to-parent')
   },
-  methods:{
+  methods: {
     getChildrenValue(res){
-      this.parentMessage=res
+      this.parentMessage = res
     },
     passDataToChildren(){
       this.$eventBus.$emit('emit-one-parent-to-chidlren',666)

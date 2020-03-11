@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 name-seo='培训标题'>{{pageTitle}}</h1>
+    <h1 name-seo="培训标题">{{ pageTitle }}</h1>
     <h2>js常用</h2>
     <p>红色相对body水平垂直居中</p>
     <p>蓝色相对父元素水平垂直居中</p>
@@ -35,26 +35,26 @@
 
 <script>
 export default {
-metaInfo: {
-    title: '大王小丑培训js-public页面', // set a title
-    meta: [{             // set meta
-      name: 'keyWords',
-      content: '大王小丑,培训,js-public页面'
-    },
-    {
-      name: 'description',
-      content: '大王小丑,培训,js-public页面'
-    }],
-    link: [{ // set link
-      rel: 'asstes',
-      href: 'https://assets-cdn.github.com/'
-    }]
-  },
+  metaInfo: {
+    title: '大王小丑培训js-public页面', // set a title
+    meta: [{ // set meta
+      name: 'keyWords',
+      content: '大王小丑,培训,js-public页面'
+    },
+    {
+      name: 'description',
+      content: '大王小丑,培训,js-public页面'
+    }],
+    link: [{ // set link
+      rel: 'asstes',
+      href: 'https://assets-cdn.github.com/'
+    }]
+  },
   data(){
     return{
-      pageTitle:'我是培训标题'
+      pageTitle: '我是培训标题'
     }
-}
+  }
 }
 </script>
 

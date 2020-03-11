@@ -13,14 +13,14 @@
 <script>
 import myGrandson from './grandson.vue'
 export default {
-  components:{
+  components: {
     myGrandson
   },
-  inheritAttrs:false,
+  inheritAttrs: false,
   props: {
-    name:{
-      type:[String,Object,Array],//支持多种类型
-      default:'我还没拿到父组件的数据，现在仅仅是站位假数据'
+    name: {
+      type: [String,Object,Array],//支持多种类型
+      default: '我还没拿到父组件的数据，现在仅仅是站位假数据'
     }
   },
   data(){
@@ -30,10 +30,10 @@ export default {
   created(){
     
   },
-  methods:{
+  methods: {
     childrenF(){
       console.log('我是孩子组件中的按钮')
-    this.$emit('childrenF');
+      this.$emit('childrenF')
     }
   }
 }

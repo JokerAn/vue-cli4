@@ -11,15 +11,15 @@
 <script>
 import myParent from './parent.vue'
 export default {
-  name:'AttrsListeners',
-  components:{
+  name: 'AttrsListeners',
+  components: {
     myParent
   },
   data(){
     return{}
   },
   created(){},
-  methods:{
+  methods: {
 
   }
 }

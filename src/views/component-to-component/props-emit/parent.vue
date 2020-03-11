@@ -13,18 +13,18 @@
 import myChildren from '@/views/component-to-component/props-emit/children.vue'
 
 export default {
-  components:{
+  components: {
     myChildren
   },
   data(){
     return{
-      parentMessage:'我是父组件中的message=110'
+      parentMessage: '我是父组件中的message=110'
     }
   },
   created(){},
-  methods:{
+  methods: {
     getChildrenValue(res){
-      this.parentMessage=res
+      this.parentMessage = res
     }
   }
 }

@@ -62,30 +62,30 @@
 import { chainDate } from '@/utils/public'
 export default {
   metaInfo: {
-    title: '大王小丑培训about页面', // set a title
-    meta: [{             // set meta
-      name: 'keyWords',
-      content: '大王小丑,培训,about页面'
-    },
-    {
-      name: 'description',
-      content: '大王小丑,培训,about页面'
-    }],
-    link: [{ // set link
-      rel: 'asstes',
-      href: 'https://assets-cdn.github.com/'
-    }]
-  },
+    title: '大王小丑培训about页面', // set a title
+    meta: [{ // set meta
+      name: 'keyWords',
+      content: '大王小丑,培训,about页面'
+    },
+    {
+      name: 'description',
+      content: '大王小丑,培训,about页面'
+    }],
+    link: [{ // set link
+      rel: 'asstes',
+      href: 'https://assets-cdn.github.com/'
+    }]
+  },
   data() {
     return {
-      'userInfo':{},
-      'login':{
-        'anonymouslogin':true,
-        'loginName':'wei.xia@ambow.com',
-        'password':'Ambow99999999'
+      'userInfo': {},
+      'login': {
+        'anonymouslogin': true,
+        'loginName': 'wei.xia@ambow.com',
+        'password': 'Ambow99999999'
       },
       'baseUrl': process.env.VUE_APP_BASE_API,
-      'nowTime':new Date()-0,
+      'nowTime': new Date() - 0,
       'options': [
         {
           'value': '选项1',
@@ -121,9 +121,9 @@ export default {
     },
     loginF2() {
       this.$axios({
-        'method':'post',
-        'url':this.$apiUrls.login.login,
-        'data':this.login
+        'method': 'post',
+        'url': this.$apiUrls.login.login,
+        'data': this.login
       }).then(result=>{
         console.log(result)
         result.data.userInfo.sexJokerAn = 1

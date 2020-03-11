@@ -8,7 +8,7 @@
       }</h3>
     <div class="children">
       <my-children :name="name" :age="age" :city="city" 
-        @grandsonF1="getGrandsonF1" @grandsonF2="getGrandsonF2" @childrenF="getChildrenF">
+                   @grandsonF1="getGrandsonF1" @grandsonF2="getGrandsonF2" @childrenF="getChildrenF">
       </my-children>
     </div>
   </div>
@@ -19,26 +19,26 @@
 import myChildren from './children.vue'
 
 export default {
-  components:{
+  components: {
     myChildren
   },
   data(){
     return{
-      name:'张三',
-      age:'18',
-      city:'石家庄'
+      name: '张三',
+      age: '18',
+      city: '石家庄'
     }
   },
   created(){},
-  methods:{
+  methods: {
     getGrandsonF1(){
-      console.log("我是父组件，我接受到了孙子组件中上弹的方法 grandsonF1")
+      console.log('我是父组件，我接受到了孙子组件中上弹的方法 grandsonF1')
     },
     getGrandsonF2(){
-      console.log("我是父组件，我接受到了孙子组件中上弹的方法 grandsonF2")
+      console.log('我是父组件，我接受到了孙子组件中上弹的方法 grandsonF2')
     },
     getChildrenF(){
-      console.log("我是父组件，我接受到了孩子组件中上弹的方法 childrenF")
+      console.log('我是父组件，我接受到了孩子组件中上弹的方法 childrenF')
     }
   }
 }

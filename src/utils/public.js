@@ -24,6 +24,7 @@ export function chainDate(times, fengefu) {
   )
 }
 export function noValue(res){
-  let result = ['', null, undefined].includes(res);
+  let result = ['', null, undefined].includes(res)
+
   return result
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>我是孙子组件</h3>
-    <p>$parent.$parent.num:{{$parent.$parent.num}}</p>
+    <p>$parent.$parent.num:{{ $parent.$parent.num }}</p>
     <el-button @click="changeNum()">更改顶层的num</el-button>
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   data(){
     return{
-      message:'我是孙子组件中定义的message'
+      message: '我是孙子组件中定义的message'
     }
   },
   beforeCreate(){
@@ -26,7 +26,7 @@ export default {
     //可以获取到 ✔
     // console.log(this.$parent, '父组件')
   },
-  methods:{
+  methods: {
     sayHello(){
       alert('我是孙子组件中定义的方法：sayHello')
     },

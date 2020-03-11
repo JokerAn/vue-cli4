@@ -12,32 +12,32 @@
 
 <script>
 export default {
-  inheritAttrs:false,
+  inheritAttrs: false,
   props: {
-    city:{
-      type:[String],
-      default:'我还没拿到父组件的数据，现在仅仅是站位假数据'
+    city: {
+      type: [String],
+      default: '我还没拿到父组件的数据，现在仅仅是站位假数据'
     },
-    age:{
-      type:[String],
-      default:'我还没拿到父组件的数据，现在仅仅是站位假数据'
+    age: {
+      type: [String],
+      default: '我还没拿到父组件的数据，现在仅仅是站位假数据'
     },
-    name:{
-      type:[String],
-      default:'我并没有拿到父组件的数据，现在仅仅是站位假数据'
+    name: {
+      type: [String],
+      default: '我并没有拿到父组件的数据，现在仅仅是站位假数据'
     }
   },
   data(){
     return{}
   },
-  methods:{
+  methods: {
     test01(){
-      console.log("我是孙子组件的按钮1 我被点击了")
-      this.$emit("grandsonF1");
+      console.log('我是孙子组件的按钮1 我被点击了')
+      this.$emit('grandsonF1')
     },
     test02(){
-      console.log("我是孙子组件的按钮2 我被点击了")
-      this.$emit("grandsonF2");
+      console.log('我是孙子组件的按钮2 我被点击了')
+      this.$emit('grandsonF2')
     }
   }
 }

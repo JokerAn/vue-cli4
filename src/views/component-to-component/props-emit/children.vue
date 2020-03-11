@@ -12,20 +12,20 @@
 <script>
 export default {
   props: {
-    passData:{
-      type:[String,Object,Array],//支持多种类型
-      default:()=>{// default 只能是字符串 或者 function两种 别用箭头函数 会有坑
+    passData: {
+      type: [String,Object,Array],//支持多种类型
+      default: ()=>{// default 只能是字符串 或者 function两种 别用箭头函数 会有坑
         return '我还没拿到父组件的数据，现在仅仅是站位假数据'
       }
     }
   },
   data(){
     return{
-      childrenMessage:'我是子组件中的message=6'
+      childrenMessage: '我是子组件中的message=6'
     }
   },
   created(){},
-  methods:{
+  methods: {
     changeParentValue () {
       this.$emit('change-parent-value','我是父组件，我的值现在变成子组件传递过来的值了=50！')
     }
