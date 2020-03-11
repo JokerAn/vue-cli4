@@ -57,22 +57,20 @@ module.exports = {
   // },
   configureWebpack: config => {
     // 覆盖webpack默认配置的都在这里
-    let finallyObject={
-      'resolve': {
+    let finallyObject = {
+        'resolve': {
         // 配置解析别名
-        'alias': {
-          '@': path.resolve(__dirname, './src'),
-          '@views': path.resolve(__dirname, './src/views')
+          'alias': {
+            '@': path.resolve(__dirname, './src'),
+            '@views': path.resolve(__dirname, './src/views')
+          }
         }
-      }
-    },
-    externals: {
-      AMap: 'AMap'
-    }
+      },
     //引入prerender-spa-plugin插件开始
     //正式环境才需要用prerender-spa-plugin这个插件 ！测试环境不用seo
-    if (process.env.NODE_ENV === 'production'){
-      finallyObject.plugins= [
+
+    if ( process.env.NODE_ENV === 'production' ){
+      finallyObject.plugins = [
         new PrerenderSPAPlugin({
           // 生成文件的路径，也可以与webpakc打包的一致。
           // 下面这句话非常重要！！！
@@ -83,7 +81,7 @@ module.exports = {
           routes: [
             '/','/home', '/login', '/about','/component-to-component','/component-to-component/props-emit',
             '/component-to-component/emit-on','/component-to-component/parent-children-ref',
-            '/component-to-component/provide-inject','/js-public',
+            '/component-to-component/provide-inject','/js-public'
           ],
         
         
@@ -97,7 +95,7 @@ module.exports = {
             renderAfterDocumentEvent: 'render-event'
           })
         })
-      ]
+      ]
       return finallyObject
     }
     //引入prerender-spa-plugin插件结束
@@ -112,38 +110,38 @@ module.exports = {
 //   store,
 //   'render': h => h(App),
 //   //添加到这里,这里的render-event和vue.config.js里面的renderAfterDocumentEvent配置名称一致
-//     mounted () {
-//         document.dispatchEvent(new Event('render-event'))
-//       }
+//    mounted () {
+//       document.dispatchEvent(new Event('render-event'))
+//      }
 // }).$mount('#app')
 
 // 引入vue-meta-info yarn add vue-meta-info
 // 普通文件 xxx.vue 添加metaInfo
-  //<script>
-  // export default {
-  //   name: 'home',
-  //   metaInfo: {
-  //     title: '大王小丑培训home页面', // set a title
-  //     meta: [{             // set meta
-  //       name: 'keyWords',
-  //       content: '大王小丑,培训,home页面'
-  //     },
-  //     {
-  //       name: 'description',
-  //       content: '大王小丑,培训,home页面'
-  //     }],
-  //     link: [{ // set link
-  //       rel: 'asstes',
-  //       href: 'https://assets-cdn.github.com/'
-  //     }]
-  //   },
-  //   'components': {
-  //     HelloWorld
-  //   },
-  //   data() {
-  //     return {
-  //       'msg': process.env.VUE_APP_MSG,
-  //     }
-  //   }
-  // }
-  // </script>
+//<script>
+// export default {
+//   name: 'home',
+//   metaInfo: {
+//   title: '大王小丑培训home页面', // set a title
+//   meta: [{       // set meta
+//    name: 'keyWords',
+//    content: '大王小丑,培训,home页面'
+//   },
+//   {
+//    name: 'description',
+//    content: '大王小丑,培训,home页面'
+//   }],
+//   link: [{ // set link
+//    rel: 'asstes',
+//    href: 'https://assets-cdn.github.com/'
+//   }]
+//  },
+//   'components': {
+//     HelloWorld
+//   },
+//   data() {
+//     return {
+//       'msg': process.env.VUE_APP_MSG,
+//     }
+//   }
+// }
+// </script>
