@@ -15,9 +15,7 @@ Vue.component('icon',Icon)
 Vue.config.productionTip = false
 // console.log(process.env)
 import myAxios from '@/apis/httpBase.js'
-import apiUrls from '@/apis/apiUrls.js'
 Vue.prototype.$axios = myAxios
-Vue.prototype.$apiUrls = apiUrls
 import './components/index.js'
 import * as filters from './filters'
 Object.keys(filters).forEach(key => {
@@ -25,6 +23,8 @@ Object.keys(filters).forEach(key => {
 })
 import eventBus from '@/utils/event-bus.js'
 Vue.prototype.$eventBus = eventBus
+import MetaInfo from 'vue-meta-info'
+Vue.use(MetaInfo)
 new Vue({
   router,
   store,
