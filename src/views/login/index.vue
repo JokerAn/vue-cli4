@@ -22,20 +22,19 @@
 import {loginApi } from '@/apis/login'
 import {noValue } from '@/utils/public'
 export default {
-  
   metaInfo: {
-    title: '啊啊啊啊啊啊啊啊啊啊', // set a title
+    title: '登录页面', // set a title
     meta: [{ // set meta
       name: 'keyWords',
-      content: '啊啊啊啊啊啊啊啊啊啊'
+      content: '登录页面'
     },
     {
       name: 'description',
-      content: '啊啊啊啊啊啊啊啊啊啊'
+      content: '登录页面'
     }],
     link: [{ // set link
       rel: 'asstes',
-      href: 'https://assets-cdn.github.com/'
+      href: 'https://登录页面.com/'
     }]
   },
   data() {

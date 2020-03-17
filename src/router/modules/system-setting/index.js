@@ -1,4 +1,5 @@
 import Layout from '@/views/layout'
+import PersonCenter from '@views/system-setting/person-center'
 export default [
   {
     path: '/system-setting',
@@ -11,7 +12,7 @@ export default [
     children: [
       {
         path: 'person-center',
-        component: ()=> import(/* webpackChunkName: "personCenter" */ '@views/system-setting/person-center'),
+        component: PersonCenter,
         meta: {
           title: '个人中心'
         }

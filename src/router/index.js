@@ -30,11 +30,11 @@ let fullRoutes = [
   },{
     //跳转路由失败 信息发布-文章管理
     'path': '*',
-    'redirect': '/login'
+    'redirect': '/icons'
   }
 ]
 const router = new VueRouter({
-  'mode': 'hash',
+  'mode': 'history',
   'base': process.env.BASE_URL,
   routes: fullRoutes
 })

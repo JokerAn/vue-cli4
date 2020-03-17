@@ -45,16 +45,6 @@ module.exports = {
       }
     }
   },
-  // 'configureWebpack': {
-  //   // 覆盖webpack默认配置的都在这里
-  //   'resolve': {
-  //     // 配置解析别名
-  //     'alias': {
-  //       '@': path.resolve(__dirname, './src'),
-  //       '@views': path.resolve(__dirname, './src/views')
-  //     }
-  //   }
-  // },
   configureWebpack: config => {
     // 覆盖webpack默认配置的都在这里
     let finallyObject = {
@@ -83,7 +73,8 @@ module.exports = {
         
           // 对应自己的路由文件相对哪个进行eso优化写那个，比如a有参数，就需要写成 /a/param1。
           routes: [
-            '/icons','/system-setting/person-center'
+            '/','/login','/system-setting/person-center',
+            '/icons','/system-setting/safe-setting'
           ],
         
         
