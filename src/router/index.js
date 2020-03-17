@@ -28,7 +28,7 @@ let fullRoutes = [
     'name': 'icons',
     'component': Icons
   },{
-    //跳转路由失败 信息发布-文章管理
+    //跳转路由失败 信息发布-文章管理 
     'path': '*',
     'redirect': '/login'
   }
