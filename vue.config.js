@@ -1,4 +1,6 @@
 const path = require('path')
+const webpack = require('webpack')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 module.exports = {
   'publicPath': '/', // 公共路径
@@ -38,6 +40,8 @@ module.exports = {
       }
     }
   },
+  
+
   'configureWebpack': {
     // 覆盖webpack默认配置的都在这里
     'resolve': {
@@ -49,6 +53,22 @@ module.exports = {
     },
     externals: {
       AMap: 'AMap'
-    }
+    },
+    plugins: [
+      new webpack.DllReferencePlugin({
+        context: process.cwd(),
+        manifest: require('./public/vendor/vendor-manifest.json')
+      }),
+    
+      new AddAssetHtmlPlugin({
+      // dll文件位置
+        filepath: path.resolve(__dirname, './public/vendor/*.js'),
+        // dll 引用路径
+        publicPath: './vendor',
+        // dll最终输出的目录
+        outputPath: './vendor'
+      })
+    ]
+      
   }
 }

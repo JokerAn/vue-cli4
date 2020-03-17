@@ -16,7 +16,7 @@ export const routes = [
   ...infoRelease,
   ...systemSetting
 ]
-//最终路由
+//最终路由asdfasdfadf
 let fullRoutes = [
   ...routes,
   {
