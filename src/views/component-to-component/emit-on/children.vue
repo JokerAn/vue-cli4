@@ -12,24 +12,24 @@
 <script>
 export default {
   props: {
-    passData:{
-      type:[String,Object,Array],//支持多种类型
-      default:()=>{// default 只能是字符串 或者 function两种 别用箭头函数 会有坑
+    passData: {
+      type: [String,Object,Array],//支持多种类型
+      default: ()=>{// default 只能是字符串 或者 function两种 别用箭头函数 会有坑
         return '我还没拿到父组件的数据，现在仅仅是站位假数据'
       }
     }
   },
   data(){
     return{
-      childrenMessage:'我是子组件中的message=6'
+      childrenMessage: '我是子组件中的message=6'
     }
   },
   created(){
     this.$eventBus.$on('emit-one-parent-to-chidlren',(res)=>{
-      this.childrenMessage=res
+      this.childrenMessage = res
       this.$message({
-        type:'success',
-        message:`我接收到了父组件传来的数据，数据是：${res}`
+        type: 'success',
+        message: `我接收到了父组件传来的数据，数据是：${res}`
       })
     })
     
@@ -37,7 +37,7 @@ export default {
   destroyed(){
     this.$eventBus.$off('emit-one-parent-to-chidlren')
   },
-  methods:{
+  methods: {
     passDataToParent(){
       this.$eventBus.$emit('emit-one-chidlren-to-parent',50)
     }
