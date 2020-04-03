@@ -123,3 +123,42 @@ module.exports = {
   }
 }
 
+module.exports = {
+  ....一些基础配置
+  ....
+  ....
+  'configureWebpack':config => {
+    config.xxx=xxx;
+    if(xxx){
+      xxx
+    }
+    return {
+      // 覆盖webpack默认配置的都在这里
+      'resolve': {
+        // 配置解析别名
+        'alias': {
+          '@': path.resolve(__dirname, './src'),
+          '@views': path.resolve(__dirname, './src/views')
+        }
+      },
+      plugins: [
+        //这里就是这么写！
+        new webpack.DllReferencePlugin({
+          context: process.cwd(),
+          manifest: require('./public/vendor/vendor-manifest.json')
+        }),
+        // 自动在public/index.html中生成script标签
+        new AddAssetHtmlPlugin({
+        // dll文件位置
+          filepath: path.resolve(__dirname, './public/vendor/*.js'),
+          // dll 引用路径
+          publicPath: './vendor',
+          // dll最终输出的目录
+          outputPath: './vendor'
+        })
+      ]
+    }
+    
+  }
+}
+
