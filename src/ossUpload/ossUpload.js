@@ -23,7 +23,13 @@ export const OssUploadMixins = {
     }
   },
   methods: {
-    uploadImg(dir, ossInfo, file) {
+    /**
+     * 封装阿里云oss最终上传的参数 
+     * @param {String} dir  阿里云文件路径
+     * @param {Object} ossInfo  阿里云用户配置对象
+     * @param {file} file  用户上传的文件
+    */
+    getOssUploadParams(dir, ossInfo, file) {
       console.log({ossInfo})
       // 生成年月日
       function generationDate(){
@@ -41,31 +47,35 @@ export const OssUploadMixins = {
       function packagePathName(path){
         console.log(path)
         let extName = path.split('.').pop().toLowerCase()
-        //这里是采用当前的时间戳 + 150内的随机数来给图片命名的
 
+        //这里是采用当前的时间戳 + 150内的随机数来给图片命名的
         return`${dir} ${generationDate()}${new Date().getTime() + Math.floor(Math.random() * 150)}.${extName}`
       }
+
       // 生成图片上传的位置路径
       const aliyunFileKey = packagePathName(file.name)
-      // 设置 aliOss 上传的文件路径
 
+      // 设置 aliOss 上传的文件路径
       this.ossUploadAliyunFileKeyMixins = aliyunFileKey
+
       // 设置 上传 aliOss 的 唯一 key
       const accessid = ossInfo.accessKeyId
-      // 生成 base64 编码
+
+      // 生成 base64 编码 将日期（现在的日期往后推ossConfig.timeout分钟）和文件大小限制5M用base64编码变为字符串
       const policyBase64 = this.getPolicyBase64()
 
-      console.log(ossInfo.accessKeySecret)
-      // return 
-      // 生成 accessKeySecret 下的唯一签名
-      const signature = this.getSignature(policyBase64, ossInfo.accessKeySecret)// 获取签名
-      // 设置 上传 aliOss 的服务器地址
+      // 获取签名 {base64（过期时间和文件大小限制5m）和 ossInfo.accessKeySecret 打包签名（加密）}
+      // oss阿里云服务器会用参数 进行一模一样的加密 如果得到的值一样 那就说明是合法的
+      const signature = this.getSignature(policyBase64, ossInfo.accessKeySecret)
 
+      // 设置 上传 aliOss 的服务器地址
       this.ossUploadUrlMixins = ossInfo.urlPrefix
+
+      //最终上传图片要发送的参数
       this.ossUploadFormDataMixins = {
         key: aliyunFileKey,
-        policy: policyBase64,
         OSSAccessKeyId: accessid,
+        policy: policyBase64,
         'success_action_status': '200',
         'x-oss-security-token': ossInfo.securityToken,
         signature
@@ -74,12 +84,17 @@ export const OssUploadMixins = {
     ossUploadMixins(file,type = 'file') {
       console.log(file)
       return new Promise(async(resolve, reject) => {
+
         // 设置 上传的类型控制
         this.ossUploadTypeMixins = type
+
+        //从后台获取阿里云的一些信息（储存到前端不安全）
         axios({ url: ossConfig.url, methods: 'get'}).then(async (res) => {
-          console.log(res)
-          this.uploadImg(this.ossUploadActionMixins, res.data.data, file)
-          // 上传图片
+          console.log(res)//阿里云配置的id等
+          
+          // 配置上传文件需要的参数
+          this.getOssUploadParams(this.ossUploadActionMixins, res.data.data, file)
+
           const result = await this.ossUpload(file)
 
           resolve(result)
@@ -92,6 +107,8 @@ export const OssUploadMixins = {
     ossUpload(file) {
       return new Promise((resolve, reject) => {
         const { key, policy, OSSAccessKeyId, signature } = this.ossUploadFormDataMixins
+
+        //将参数最终转换为formData类型提交
         const formData = new FormData()
 
         formData.append('key', key)
@@ -101,9 +118,6 @@ export const OssUploadMixins = {
         formData.append('success_action_status', '200')
         formData.append('x-oss-security-token', this.ossUploadFormDataMixins['x-oss-security-token'])
         formData.append('file', file)
-        console.log(this.ossUploadUrlMixins)
-        console.log(formData)
-
         axios({
           method: 'post',
           url: this.ossUploadUrlMixins,
@@ -116,11 +130,11 @@ export const OssUploadMixins = {
           })
         }).catch((err) => {
           reject(err)
-          console.log({ '错误': err })
+          console.error('oss上传错误', err)
         })
       })
     },
-    // 获取加密值
+    // 获取加密值 将Policy失效时间和上传文件的大小限制,5mb 转为base64
     getPolicyBase64() {
       const date = new Date()
 
@@ -139,10 +153,8 @@ export const OssUploadMixins = {
     },
     // 获取 签名
     getSignature(policyBase64, accessKeySecret) {
-      const accesskey = accessKeySecret
 
-      console.log({'accessKeySecret': accessKeySecret})
-      const bytes = Crypto.HMAC(Crypto.SHA1, policyBase64, accesskey, {
+      const bytes = Crypto.HMAC(Crypto.SHA1, policyBase64, accessKeySecret, {
         asBytes: true
       })
       const signature = Crypto.util.bytesToBase64(bytes)
