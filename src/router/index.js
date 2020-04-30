@@ -4,6 +4,7 @@ import infoRelease from '@/router/modules/info-release'
 import systemSetting from '@/router/modules/system-setting'
 import Login from '../views/login'
 import Icons from '../views/icons'
+import Render from '../views/render'
 import Test from '../views/an-test/Home'
 const originalPush = VueRouter.prototype.push
 // 解决this.$router.push()跳转当前页面
@@ -18,7 +19,7 @@ export const routes = [
   ...systemSetting
 ]
 //最终路由
-let fullRoutes = [
+export let fullRoutes = [
   ...routes,
   {
     'path': '/test',
@@ -35,6 +36,13 @@ let fullRoutes = [
     'path': '/icons',
     'name': 'icons',
     'component': Icons,
+    meta: {
+      info: '这是svg文件夹下的图标文件'
+    }
+  },{
+    'path': '/render',
+    'name': 'render',
+    'component': Render,
     meta: {
       info: '这是svg文件夹下的图标文件'
     }
