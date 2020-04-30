@@ -1,7 +1,7 @@
 import { routes } from '@/router'
 
 export default {
-  name: 'MyAside',
+  name: 'MyRender',
   data() {
     return {
       routes: routes,
