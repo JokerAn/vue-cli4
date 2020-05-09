@@ -16,6 +16,10 @@
       <div>a5</div>
       <!-- <div>a5</div> -->
     </div>
+    <div id="a6" style="display:flex;">
+      <div class="a61" style="width:200px;height:200px;background:red"></div>
+      <div class="a62" style="background:blue;flex:1"></div>
+    </div>
     
   </div>
 </template>
