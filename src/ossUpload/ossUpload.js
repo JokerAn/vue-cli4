@@ -31,7 +31,7 @@ export const OssUploadMixins = {
         console.log(path)
         let extName = path.split('.').pop().toLowerCase()
 
-        return`${dir} ${generationDate()}${new Date().getTime() + Math.floor(Math.random() * 150)}.${extName}`
+        return`${dir}${generationDate()}${new Date().getTime() + Math.floor(Math.random() * 150)}.${extName}`
       }
       const aliyunFileKey = packagePathName(file.name)
 
