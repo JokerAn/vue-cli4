@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>文章管理</div>
-<<<<<<< HEAD
     <el-row>
       <el-form>
         <el-form-item v-for="(item01,index01) in ajaxData" :key="index01" :label="item01.name +':' ">
@@ -23,14 +22,6 @@
       </template>
         
       
-=======
-    <el-table :data="tableList">
-      <el-table-column v-for="(item,index) in tableData[0]" :key="index" :label="item.original">
-        <template slot-scope="scope">
-          <span>{{ scope.row[item.original].name }}</span>
-        </template>
-      </el-table-column>
->>>>>>> 483cf8ddf06783bfaa3ba37123a51899a5e63eab
       <el-table-column label="单价">
         <template slot-scope="scope">
           <el-input v-model="scope.row.price" type="text">
