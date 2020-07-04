@@ -66,7 +66,7 @@
   </div>
 </template>
 <script>
-import {loginApi} from '@apis/login'
+import {loginApi} from '@/apis/login'
 
 import { chainDate } from '@/utils/public'
 export default {
