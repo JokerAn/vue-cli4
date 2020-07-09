@@ -6,11 +6,14 @@
         <el-form-item v-for="(item01,index01) in ajaxData" :key="index01" :label="item01.name +':' ">
           <template v-if="item01.children&&item01.children.length>0">
             <el-checkbox-group v-model="item01.anSelectedId" style="display:inline-block;margin-left:20px;" @change="checkBoxChange($event,item01)">
-              <el-checkbox v-for="(item02,index02) in item01.children" :key="index02" :label="item02.id">{{ item02.name }}</el-checkbox>
+              <el-checkbox v-for="(item02,index02) in item01.children" :key="index02" :label="item02.id+''">{{ item02.name }}</el-checkbox>
             </el-checkbox-group>
           </template>
         </el-form-item>
       </el-form>
+    </el-row>
+    <el-row>
+      {{ tableList }}
     </el-row>
     <el-table v-if="tableList.length>0" :data="tableList">
       <template v-for="(item2,index2) in tableList[0].original">
@@ -33,15 +36,43 @@
           </el-input></template>
       </el-table-column>
     </el-table>
+    <el-button @click="huixianshujuF()">回显数据</el-button>
     <el-button @click="seeTableList()">查看组装好的table格式</el-button>
   </div>
 </template>
 <script>
-
+import { specifications } from '@/utils/specifications.js'
 
 export default {
   data(){
     return {
+      //测试回显数据 模拟后台返回格式
+      huixianshuju: [
+        {
+          'ids': '1,2,2',
+          'names': '颜色-红色,尺寸-39码,快递-顺丰',
+          'price': '1',
+          'kucun': '2'
+        },
+        {
+          'ids': '1,5,2',
+          'names': '颜色-红色,尺寸-42码,快递-顺丰',
+          'price': '3',
+          'kucun': '4'
+        },
+        {
+          'ids': '3,2,2',
+          'names': '颜色-黑色,尺寸-39码,快递-顺丰',
+          'price': '5',
+          'kucun': '6'
+        },
+        {
+          'ids': '3,5,2',
+          'names': '颜色-黑色,尺寸-42码,快递-顺丰',
+          'price': '7',
+          'kucun': '8'
+        }
+      ],
       aaaf: [],
       ajaxData: [],
       tableData: [],
@@ -68,8 +99,13 @@ export default {
         ]
       }
     ].map(item=>{
-      item.anSelectedId = []
-      item.anSelected = []
+      item.id = String(item.id)
+      item.anSelectedId = item.anSelectedId || []
+      item.anSelected = item.anSelected || []
+      item.children = item.children.map(item2=>{
+        item2.id = String(item2.id)
+        return item2
+      })
       return item
     })
   },
@@ -93,53 +129,74 @@ export default {
         }
       })
       console.log(JSON.parse(JSON.stringify(selectedData)))
-      this.getArray(selectedData)
+      this.tableList = specifications(selectedData)
+      console.log(this.tableList)
     },
     seeTableList(){
       console.log(this.tableList)
     },
-    getArray(selectedData = []){
-      function originalDataBecomeSimpleTableData(finallyData,addData){
-        let linshi = []
+    // 回显数据
+    huixianshujuF(){
+      //已经被选中的行的name
+      let selectedNames = this.huixianshuju[0].names.split(',')
+      
+      //组合数据准备盛放每一行被选中的id
+      let xyzSelected = {}
 
-        finallyData.forEach(item=>{
-          addData.forEach(item2=>{
-            linshi.push([].concat(item,item2))
-          })
+      selectedNames = selectedNames.map((item, index) => {
+        xyzSelected[item.split('-')[0]] = []
+        let name = item.split('-')[0]
+
+        item = name
+        return item
+      })
+      console.log({'已经被选中的行的name': selectedNames})
+      console.log(JSON.parse(JSON.stringify({'组合数据准备盛放每一行被选中的id': xyzSelected})))
+
+      //得到每一行的 被选中的id
+      selectedNames.forEach((item,index)=>{
+        this.huixianshuju.forEach(item2=>{
+          let idsArray = item2.ids.split(',')
+
+          if(!xyzSelected[item].includes(idsArray[index])){
+            xyzSelected[item].push(idsArray[index])
+          }
         })
-        return linshi
-      }
-      this.tableList = []
-      console.log(JSON.parse(JSON.stringify(selectedData)))
-      if(selectedData.length > 0){
-        let simpleTableList = selectedData.splice(0,1)[0]
+      })
+      console.log(JSON.parse(JSON.stringify({'组合数据准备盛放每一行被选中的id': xyzSelected})))
 
-        console.log(JSON.parse(JSON.stringify(simpleTableList)))
-        console.log(JSON.parse(JSON.stringify(selectedData)))
-        if(selectedData.length > 0){
-          selectedData.forEach((item,index,original)=>{
-            simpleTableList = originalDataBecomeSimpleTableData(simpleTableList,item)
-          })
-          console.log(simpleTableList)
-          simpleTableList.forEach(item=>{
-            console.log(item)
-            this.tableList.push({
-              ids: item.map(item2=>item2.id).join(','),
-              names: item.map(item2=>item2.name).join(','),
-              original: [...item]
+      //将选中id放回的最初数据中 直接模拟选中
+      for(var key in xyzSelected){
+        this.ajaxData.forEach(item=>{
+          if(item.name === key){
+            item.anSelectedId = xyzSelected[key]
+            item.anSelected = item.children.filter(item2=>{
+              item2.topTitleName = item.name
+              return xyzSelected[key].includes(String(item2.id))
             })
-
-          })
-        }else{
-          this.tableList = simpleTableList.map(item=>{
-            item.original = [{...item}]
-            item.ids = item.id
-            item.names = item.name
-            return item
-          })
-        }
-        console.log(JSON.parse(JSON.stringify(this.tableList)))
+          }
+        })
       }
+      console.log(JSON.parse(JSON.stringify(this.ajaxData)))
+      this.ajaxData = [...this.ajaxData]
+      let selectedData = []
+
+      this.ajaxData.forEach(item=>{
+        if(item.anSelected && item.anSelected.length > 0){
+          selectedData.push(item.anSelected)
+        }
+      })
+      console.log(JSON.parse(JSON.stringify(selectedData)))
+      this.tableList = specifications(selectedData)
+      //回显 数据
+      this.tableList.forEach(item=>{
+        this.huixianshuju.forEach(item2=>{
+          if(item.ids === item2.ids){
+            item.price = item2.price
+            item.kucun = item2.kucun
+          }
+        })
+      })
     }
   }
 }
