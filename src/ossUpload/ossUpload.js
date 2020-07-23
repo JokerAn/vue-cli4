@@ -85,9 +85,10 @@ export const OssUploadMixins = {
           url: this.ossUploadUrlMixins,
           data: formData
         }).then((res) => {
+          console.log({'最终结果': res})
           resolve({
             url: `${this.ossUploadUrlMixins}/${this.ossUploadAliyunFileKeyMixins}`,
-            type: file.name ? file.name : ''
+            type: this.ossUploadAliyunFileKeyMixins
           })
         }).catch((err) => {
           reject(err)

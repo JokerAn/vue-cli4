@@ -148,7 +148,7 @@ module.exports = {
     "complexity": [0, 11],//循环复杂度
     "computed-property-spacing": [0, "never"],//是否允许计算后的键名什么的
     "consistent-return": 0,//return 后面是否允许省略
-    "consistent-this": [2, "that"],//this别名
+    "consistent-this": [0, "that"],//this别名
     "constructor-super": 0,//非派生类不能调用super，派生类必须调用super
     "curly": [2, "all"],//必须使用 if(){} 中的{}
     "default-case": 0,//switch语句最后必须有default

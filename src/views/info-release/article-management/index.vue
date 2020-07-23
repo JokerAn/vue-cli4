@@ -8,18 +8,29 @@
     <img :src="oss.url" alt="">
     <div>路径：{{ oss.url }}</div>
     <div>文件名称(唯一标识)：{{ oss.type }}</div>
+    <hr>
+    <upload-img v-model="myImgList" :label="'上传图片'" :limit-num="6"></upload-img>
   </div>
 </template>
 
 <script>
+import uploadImg from '@/components/UploadImg'
 import {OssUploadMixins} from'../../../ossUpload/ossUpload'
 export default {
   name: 'ArticleManagement',
+  components: {
+    uploadImg
+  },
   mixins: [OssUploadMixins],
   data(){
     return {
       fileData: null,
-      oss: ''
+      oss: '',
+      popShow: true,
+      myImgList: [{
+        uid: '1',
+        url: 'https://ambow-ebopo.oss-cn-beijing.aliyuncs.com/words/images/pic/m/2020723/1595500686427.png'
+      }]
     }
   },
   methods: {
